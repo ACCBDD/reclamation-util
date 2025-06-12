@@ -3,6 +3,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
@@ -63,14 +64,11 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-
-    implementation fg.deobf("curse.maven:natures-aura-306626:4963590")
-    implementation fg.deobf("curse.maven:patchouli-306770:6164575")
 }
 
 mixin {
-    add sourceSets.main, 'mixins.narenderfix.refmap.json'
-    config 'mixins.narenderfix.json'
+    add sourceSets.main, 'mixins.reclamation_util.refmap.json'
+    config 'mixins.reclamation_util.json'
 
     debug.verbose = true
     debug.export = true

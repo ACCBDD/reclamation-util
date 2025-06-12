@@ -1,2 +1,2 @@
-# naturesaura-renderfix
-A small patch for Nature's Aura to fix a rendering issue.
+# reclamation-util
+Utilities and mixins for the Reclamation modpack.
