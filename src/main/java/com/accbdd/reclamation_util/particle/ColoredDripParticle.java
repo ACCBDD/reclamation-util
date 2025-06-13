@@ -112,9 +112,9 @@ public class ColoredDripParticle extends TextureSheetParticle {
         }
 
         protected void preMoveUpdate() {
-            this.rCol = color2.x + (color2.x - color1.x) * ((40f-lifetime)/40);
-            this.gCol = color2.y + (color2.y - color1.y) * ((40f-lifetime)/40);
-            this.bCol = color2.z + (color2.z - color1.z) * ((40f-lifetime)/40);
+            this.rCol = color1.x - (color1.x - color2.x) * ((40f-lifetime)/40);
+            this.gCol = color1.y - (color1.y - color2.y) * ((40f-lifetime)/40);
+            this.bCol = color1.z - (color1.z - color2.z) * ((40f-lifetime)/40);
             super.preMoveUpdate();
         }
     }
