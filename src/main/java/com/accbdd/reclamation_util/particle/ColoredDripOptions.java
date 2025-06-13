@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.particle;
 
-import com.accbdd.reclamation_util.register.Particles;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
@@ -16,23 +15,23 @@ import java.util.Locale;
 
 public class ColoredDripOptions implements ParticleOptions {
     protected final Vector3f color;
-    protected final Type type;
+    protected final ColoredDripParticle.Type type;
     protected final boolean glowing;
 
     public static final Codec<ColoredDripOptions> CODEC = RecordCodecBuilder.create((instance) ->
             instance.group(
                     ExtraCodecs.VECTOR3F.fieldOf("color").forGetter(drip -> drip.color),
                     Codec.BOOL.fieldOf("glowing").forGetter(drip -> drip.glowing),
-                    Codec.STRING.xmap(Type::valueOf, Enum::name).fieldOf("type").forGetter(drip -> drip.type)
+                    Codec.STRING.xmap(ColoredDripParticle.Type::valueOf, Enum::name).fieldOf("type").forGetter(drip -> drip.type)
             ).apply(instance, ColoredDripOptions::new));
 
-    public ColoredDripOptions(Vector3f color, boolean glowing, Type type) {
+    public ColoredDripOptions(Vector3f color, boolean glowing, ColoredDripParticle.Type type) {
         this.color = color;
         this.glowing = glowing;
         this.type = type;
     }
 
-    public ColoredDripOptions(ColoredDripOptions options, Type type) {
+    public ColoredDripOptions(ColoredDripOptions options, ColoredDripParticle.Type type) {
         this(options.color, options.glowing, type);
     }
 
@@ -74,23 +73,11 @@ public class ColoredDripOptions implements ParticleOptions {
             Vector3f vector3f = readVector3f(reader);
             reader.expect(' ');
             boolean glowing = reader.readBoolean();
-            return new ColoredDripOptions(vector3f, glowing, Type.HANG);
+            return new ColoredDripOptions(vector3f, glowing, ColoredDripParticle.Type.HANG);
         }
 
         public ColoredDripOptions fromNetwork(ParticleType<ColoredDripOptions> type, FriendlyByteBuf buf) {
-            return new ColoredDripOptions(readVector3f(buf), buf.readBoolean(), buf.readEnum(Type.class));
+            return new ColoredDripOptions(readVector3f(buf), buf.readBoolean(), buf.readEnum(ColoredDripParticle.Type.class));
         }
     };
-
-    public enum Type {
-        HANG(Particles.COLORED_DRIP_HANG.get()),
-        FALL(Particles.COLORED_DRIP_FALL.get()),
-        LAND(Particles.COLORED_DRIP_LAND.get());
-
-        public final ParticleType<?> partType;
-
-        Type(ColoredDripType coloredDripType) {
-            this.partType = coloredDripType;
-        }
-    }
 }

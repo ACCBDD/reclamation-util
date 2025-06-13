@@ -1,12 +1,12 @@
 package com.accbdd.reclamation_util.particle;
 
+import com.accbdd.reclamation_util.register.Particles;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.ParticleRenderType;
-import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +62,10 @@ public class ColoredDripParticle extends TextureSheetParticle {
         return new ColoredDripHangParticle(pLevel, pX, pY, pZ, options);
     }
 
+    public static TextureSheetParticle createHangParticle(ClientLevel pLevel, double pX, double pY, double pZ, TwoColoredDripOptions options) {
+        return new TwoColoredDripHangParticle(pLevel, pX, pY, pZ, options);
+    }
+
     public static TextureSheetParticle createFallParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options) {
         return new ColoredFallAndLandParticle(pLevel, pX, pY, pZ, options);
     }
@@ -72,11 +76,11 @@ public class ColoredDripParticle extends TextureSheetParticle {
 
     @OnlyIn(Dist.CLIENT)
     static class ColoredDripHangParticle extends ColoredDripParticle {
-        private final ParticleOptions fallingParticle;
+        protected ParticleOptions fallingParticle;
 
         ColoredDripHangParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options) {
             super(pLevel, pX, pY, pZ, options);
-            this.fallingParticle = new ColoredDripOptions(options, ColoredDripOptions.Type.FALL);
+            this.fallingParticle = new ColoredDripOptions(options, Type.FALL);
             this.gravity *= 0.02F;
             this.lifetime = 40;
         }
@@ -86,13 +90,32 @@ public class ColoredDripParticle extends TextureSheetParticle {
                 this.remove();
                 this.level.addParticle(this.fallingParticle, this.x, this.y, this.z, this.xd, this.yd, this.zd);
             }
-
         }
 
         protected void postMoveUpdate() {
             this.xd *= 0.02D;
             this.yd *= 0.02D;
             this.zd *= 0.02D;
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    static class TwoColoredDripHangParticle extends ColoredDripHangParticle {
+        private final Vector3f color1;
+        private final Vector3f color2;
+
+        TwoColoredDripHangParticle(ClientLevel pLevel, double pX, double pY, double pZ, TwoColoredDripOptions options) {
+            super(pLevel, pX, pY, pZ, new ColoredDripOptions(options.color1, options.glowing, Type.HANG));
+            this.fallingParticle = new ColoredDripOptions(options.color2, options.glowing, Type.FALL);
+            color1 = options.color1;
+            color2 = options.color2;
+        }
+
+        protected void preMoveUpdate() {
+            this.rCol = color2.x + (color2.x - color1.x) * ((40f-lifetime)/40);
+            this.gCol = color2.y + (color2.y - color1.y) * ((40f-lifetime)/40);
+            this.bCol = color2.z + (color2.z - color1.z) * ((40f-lifetime)/40);
+            super.preMoveUpdate();
         }
     }
 
@@ -110,7 +133,7 @@ public class ColoredDripParticle extends TextureSheetParticle {
 
         ColoredFallAndLandParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options) {
             super(pLevel, pX, pY, pZ, options);
-            this.landParticle = new ColoredDripOptions(options, ColoredDripOptions.Type.LAND);
+            this.landParticle = new ColoredDripOptions(options, Type.LAND);
         }
 
         protected void postMoveUpdate() {
@@ -151,7 +174,28 @@ public class ColoredDripParticle extends TextureSheetParticle {
                 case LAND -> createLandParticle(pLevel, pX, pY, pZ, pOptions);
                 default -> createHangParticle(pLevel, pX, pY, pZ, pOptions);
             };
+        }
+    }
 
+    @OnlyIn(Dist.CLIENT)
+    public static class TwoProvider implements ParticleProvider.Sprite<TwoColoredDripOptions> {
+        @Nullable
+        @Override
+        public TextureSheetParticle createParticle(TwoColoredDripOptions pOptions, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
+           return createHangParticle(pLevel, pX, pY, pZ, pOptions);
+        }
+    }
+
+    public enum Type {
+        TWO_HANG(Particles.TWO_COLORED_DRIP_HANG.get()),
+        HANG(Particles.COLORED_DRIP_HANG.get()),
+        FALL(Particles.COLORED_DRIP_FALL.get()),
+        LAND(Particles.COLORED_DRIP_LAND.get());
+
+        public final ParticleType<?> partType;
+
+        Type(ParticleType<?> coloredDripType) {
+            this.partType = coloredDripType;
         }
     }
 }

@@ -31,6 +31,8 @@ public class ReclamationUtil
         public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
             event.registerSprite(Particles.COLORED_DRIP_HANG.get(),
                     new ColoredDripParticle.Provider());
+            event.registerSprite(Particles.TWO_COLORED_DRIP_HANG.get(),
+                    new ColoredDripParticle.TwoProvider());
             event.registerSprite(Particles.COLORED_DRIP_FALL.get(),
                     new ColoredDripParticle.Provider());
             event.registerSprite(Particles.COLORED_DRIP_LAND.get(),
