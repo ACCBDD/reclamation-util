@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -35,12 +34,12 @@ public class ReclamationPlantModifiers {
 
         public Optional<InteractionResult> onRightClickPre(AgriCrop crop, ItemStack stack, @Nullable Entity breaker) {
             if (crop.isFullyGrown()) {
-                if (breaker instanceof Player player) {
+                if (breaker instanceof Player) {
                     Level level = crop.getLevel();
                     if (level instanceof ServerLevel && (Enchanted.RANDOM.nextInt(5) == 0 || level.isDay())) {
                         Mandrake entity = (Mandrake) ((EntityType) EEntityTypes.MANDRAKE.get()).create(level);
                         BlockPos pos = crop.getBlockPos();
-                        entity.moveTo((double) pos.getX() + 0.5, (double) pos.getY(), (double) pos.getZ() + 0.5, 0.0F, 0.0F);
+                        entity.moveTo((double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, 0.0F, 0.0F);
                         level.addFreshEntity(entity);
                         crop.setGrowthStage(new AgriGrowthStage(1, crop.getGrowthStage().total()));
                         return Optional.of(InteractionResult.CONSUME);
