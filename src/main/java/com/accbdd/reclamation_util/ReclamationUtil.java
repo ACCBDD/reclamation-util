@@ -3,6 +3,7 @@ package com.accbdd.reclamation_util;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
 import com.accbdd.reclamation_util.register.Particles;
+import com.agricraft.agricraft.forge.AgriCraftForge;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -25,6 +26,7 @@ public class ReclamationUtil
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         Particles.REGISTER.register(modEventBus);
+        modEventBus.addListener(ReclamationUtil::onCommonSetup);
     }
 
     public static void onCommonSetup(FMLCommonSetupEvent event) {

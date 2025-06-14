@@ -66,12 +66,17 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     implementation fg.deobf("curse.maven:enchanted-witchcraft-560363:6638514")
+    implementation fg.deobf("curse.maven:geckolib-388172:6622543")
+    implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964")
+    implementation fg.deobf("curse.maven:stateobserver-701213:5983132")
+    implementation fg.deobf("curse.maven:patchouli-306770:6164575")
     implementation fg.deobf("curse.maven:agricraft-225635:5899444")
+    implementation fg.deobf("curse.maven:resourceful-config-714059:6231176")
 }
 
 mixin {
-    add sourceSets.main, 'mixins.reclamation_util.refmap.json'
-    config 'mixins.reclamation_util.json'
+    //add sourceSets.main, 'mixins.reclamation_util.refmap.json'
+    //config 'mixins.reclamation_util.json'
 
     debug.verbose = true
     debug.export = true

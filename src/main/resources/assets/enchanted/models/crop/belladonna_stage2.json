@@ -1,6 +1,0 @@
-{
-  "parent": "agricraft:crop/crop_hash",
-  "textures": {
-    "crop": "enchanted:block/belladonna_stage_2"
-  }
-}
