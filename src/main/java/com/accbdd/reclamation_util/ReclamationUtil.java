@@ -1,6 +1,7 @@
 package com.accbdd.reclamation_util;
 
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
+import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
 import com.accbdd.reclamation_util.register.Particles;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -9,6 +10,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -23,6 +25,10 @@ public class ReclamationUtil
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         Particles.REGISTER.register(modEventBus);
+    }
+
+    public static void onCommonSetup(FMLCommonSetupEvent event) {
+        ReclamationPlantModifiers.register();
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
