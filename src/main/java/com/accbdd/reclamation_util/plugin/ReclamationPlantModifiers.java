@@ -4,6 +4,7 @@ import com.agricraft.agricraft.api.crop.AgriCrop;
 import com.agricraft.agricraft.api.crop.AgriGrowthStage;
 import com.agricraft.agricraft.api.plant.AgriPlantModifierFactoryRegistry;
 import com.agricraft.agricraft.api.plant.IAgriPlantModifier;
+import com.agricraft.agricraft.common.block.entity.CropBlockEntity;
 import net.favouriteless.enchanted.common.Enchanted;
 import net.favouriteless.enchanted.common.entities.Mandrake;
 import net.favouriteless.enchanted.common.init.registry.EEntityTypes;
@@ -32,9 +33,9 @@ public class ReclamationPlantModifiers {
         public SummonMandrakePlantModifier() {
         }
 
-        public Optional<InteractionResult> onRightClickPre(AgriCrop crop, ItemStack stack, @Nullable Entity breaker) {
-            if (crop.isFullyGrown()) {
-                if (breaker instanceof Player) {
+        public Optional<InteractionResult> onRightClickPre(AgriCrop crop2, ItemStack stack, @Nullable Entity breaker) {
+            if (crop2.isFullyGrown()) {
+                if (breaker instanceof Player && crop2 instanceof CropBlockEntity crop) {
                     Level level = crop.getLevel();
                     if (level instanceof ServerLevel && (Enchanted.RANDOM.nextInt(5) == 0 || level.isDay())) {
                         Mandrake entity = (Mandrake) ((EntityType) EEntityTypes.MANDRAKE.get()).create(level);
