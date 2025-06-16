@@ -65,7 +65,7 @@ public class ColoredDripOptions implements ParticleOptions {
 
     @Override
     public String writeToString() {
-        return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %s", BuiltInRegistries.PARTICLE_TYPE.getKey(this.getType()), this.color.x(), this.color.y(), this.color.z(), this.type.name());
+        return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %b %s", BuiltInRegistries.PARTICLE_TYPE.getKey(this.getType()), this.color.x(), this.color.y(), this.color.z(), this.glowing, this.type.name());
     }
 
     public static final ParticleOptions.Deserializer<ColoredDripOptions> DESERIALIZER = new ParticleOptions.Deserializer<>() {

@@ -1,6 +1,7 @@
 package com.accbdd.reclamation_util;
 
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
+import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
 import com.accbdd.reclamation_util.register.Particles;
 import com.agricraft.agricraft.forge.AgriCraftForge;
@@ -45,6 +46,8 @@ public class ReclamationUtil
                     new ColoredDripParticle.Provider());
             event.registerSprite(Particles.COLORED_DRIP_LAND.get(),
                     new ColoredDripParticle.Provider());
+            event.registerSpriteSet(Particles.COLORED_LEAF_TYPE.get(), set -> (options, pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed) ->
+                    new ColoredLeafParticle(pLevel, pX, pY, pZ, set, options));
         }
     }
 }

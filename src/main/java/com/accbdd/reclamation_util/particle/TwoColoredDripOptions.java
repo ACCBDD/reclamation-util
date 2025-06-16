@@ -64,7 +64,7 @@ public class TwoColoredDripOptions implements ParticleOptions {
 
     @Override
     public String writeToString() {
-        return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f", BuiltInRegistries.PARTICLE_TYPE.getKey(this.getType()), this.color1.x(), this.color1.y(), this.color1.z(), this.color2.x(), this.color2.y(), this.color2.z()
+        return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %.2f %.2f %.2f %b", BuiltInRegistries.PARTICLE_TYPE.getKey(this.getType()), this.color1.x(), this.color1.y(), this.color1.z(), this.color2.x(), this.color2.y(), this.color2.z(), this.glowing
         );
     }
 
