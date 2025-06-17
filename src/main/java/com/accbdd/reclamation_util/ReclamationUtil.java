@@ -1,8 +1,10 @@
 package com.accbdd.reclamation_util;
 
+import com.accbdd.reclamation_util.datagen.DataGenerators;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
+import com.accbdd.reclamation_util.register.Items;
 import com.accbdd.reclamation_util.register.Particles;
 import com.agricraft.agricraft.forge.AgriCraftForge;
 import com.mojang.logging.LogUtils;
@@ -20,7 +22,7 @@ import org.slf4j.Logger;
 public class ReclamationUtil
 {
     public static final String MODID = "reclamation_util";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public ReclamationUtil(FMLJavaModLoadingContext context)
     {
@@ -28,6 +30,10 @@ public class ReclamationUtil
         MinecraftForge.EVENT_BUS.register(this);
         Particles.REGISTER.register(modEventBus);
         modEventBus.addListener(ReclamationUtil::onCommonSetup);
+        modEventBus.addListener(DataGenerators::generate);
+
+        Items.REGISTER.register(modEventBus);
+        Items.CREATIVE_MODE_TAB.register(modEventBus);
     }
 
     public static void onCommonSetup(FMLCommonSetupEvent event) {

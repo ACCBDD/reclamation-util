@@ -65,6 +65,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
+    runtimeOnly fg.deobf("curse.maven:jei-238222:6600311")
+
     implementation fg.deobf("curse.maven:enchanted-witchcraft-560363:6638514")
     implementation fg.deobf("curse.maven:geckolib-388172:6622543")
     implementation fg.deobf("curse.maven:smartbrainlib-661293:5654964")
@@ -75,8 +77,8 @@ dependencies {
 }
 
 mixin {
-    //add sourceSets.main, 'mixins.reclamation_util.refmap.json'
-    //config 'mixins.reclamation_util.json'
+    add sourceSets.main, 'mixins.reclamation_util.refmap.json'
+    config 'mixins.reclamation_util.json'
 
     debug.verbose = true
     debug.export = true
