@@ -4,6 +4,7 @@ import com.accbdd.reclamation_util.datagen.DataGenerators;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
+import com.accbdd.reclamation_util.register.BeeRegistration;
 import com.accbdd.reclamation_util.register.Items;
 import com.accbdd.reclamation_util.register.Particles;
 import com.agricraft.agricraft.forge.AgriCraftForge;
@@ -34,6 +35,7 @@ public class ReclamationUtil
 
         Items.REGISTER.register(modEventBus);
         Items.CREATIVE_MODE_TAB.register(modEventBus);
+        BeeRegistration.EFFECTS.register(modEventBus);
     }
 
     public static void onCommonSetup(FMLCommonSetupEvent event) {
