@@ -21,7 +21,6 @@ public class AgriCraftFertilityPatch {
         AgriStat fertility = AgriStatRegistry.getInstance().fertilityStat();
         double adjustedFertility = 5 + crop.getGenome().getStatGene(fertility).getTrait() / 2.0;
         double randomFertility = 1 + (fertility.getMax() - 1) * random.nextDouble();
-        ReclamationUtil.LOGGER.debug("mixin!");
         cir.setReturnValue(randomFertility < adjustedFertility);
     }
 }

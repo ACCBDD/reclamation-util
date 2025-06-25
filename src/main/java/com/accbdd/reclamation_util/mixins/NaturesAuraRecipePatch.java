@@ -1,5 +1,6 @@
 package com.accbdd.reclamation_util.mixins;
 
+import com.accbdd.reclamation_util.ReclamationUtil;
 import de.ellpeck.naturesaura.compat.jei.AnimalSpawnerCategory;
 import de.ellpeck.naturesaura.recipes.AnimalSpawnerRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -22,6 +23,7 @@ public class NaturesAuraRecipePatch {
             for(int i = 0; i < recipe.ingredients.length; ++i) {
                 builder.addSlot(RecipeIngredientRole.INPUT, i * 18 + 1, 69).addItemStacks(Arrays.asList(recipe.ingredients[i].getItems()));
             }
+
             ci.cancel();
         }
     }
