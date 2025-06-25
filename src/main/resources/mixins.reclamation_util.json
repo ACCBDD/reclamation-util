@@ -1,7 +1,8 @@
 {
   "package": "com.accbdd.reclamation_util.mixins",
   "mixins": [
-    "AgriCraftFertilityPatch"
+    "AgriCraftFertilityPatch",
+    "NaturesAuraRecipePatch"
   ],
   "client": [
   ],

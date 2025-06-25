@@ -31,6 +31,8 @@ minecraft {
                     source sourceSets.main
                 }
             }
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
         }
 
         client {
@@ -59,16 +61,32 @@ repositories {
     maven {
         url "https://cursemaven.com"
     }
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
-    runtimeOnly fg.deobf("curse.maven:jei-238222:6600311")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:15.20.0.106")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:15.20.0.106")
+
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:15.20.0.106")
     runtimeOnly fg.deobf("curse.maven:kubejs-238086:5853326")
     runtimeOnly fg.deobf("curse.maven:architectury-api-419699:5137938")
     runtimeOnly fg.deobf("curse.maven:rhino-416294:6186971")
+    runtimeOnly fg.deobf("curse.maven:ars-nouveau-401955:6688854")
+    runtimeOnly fg.deobf("curse.maven:ars-elemental-561470:6390889")
 
     implementation fg.deobf("curse.maven:enchanted-witchcraft-560363:6638514")
     implementation fg.deobf("curse.maven:geckolib-388172:6622543")
