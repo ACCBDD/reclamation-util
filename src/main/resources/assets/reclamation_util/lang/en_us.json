@@ -1,6 +1,13 @@
 {
   "item.reclamation_util.empty_biome_bottle": "Empty Biome Bottle",
   "item.reclamation_util.filled_biome_bottle": "Biome Essence",
+  "item.reclamation_util.attuned_biome_bottle": "Attuned Biome Bottle",
+  "item.reclamation_util.arid_biome_bottle": "Arid Biome Essence",
+  "item.reclamation_util.hellish_biome_bottle": "Hellish Biome Essence",
+  "item.reclamation_util.icy_biome_bottle": "Icy Biome Essence",
+  "item.reclamation_util.lush_biome_bottle": "Lush Biome Essence",
+  "item.reclamation_util.mycelic_biome_bottle": "Mycelic Biome Essence",
+  "item.reclamation_util.watery_biome_bottle": "Watery Biome Essence",
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
   "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates Aura nearby."

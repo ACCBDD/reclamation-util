@@ -1,6 +1,8 @@
 package com.accbdd.reclamation_util.register;
 
+import com.accbdd.reclamation_util.item.EmptyAttunedBiomeBottle;
 import com.accbdd.reclamation_util.item.EmptyBiomeBottle;
+import com.accbdd.reclamation_util.item.FoilItem;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -26,7 +28,14 @@ public class Items {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public static final RegistryObject<Item> EMPTY_BIOME_BOTTLE = register("empty_biome_bottle", EmptyBiomeBottle::new);
+    public static final RegistryObject<Item> ATTUNED_BIOME_BOTTLE = register("attuned_biome_bottle", EmptyAttunedBiomeBottle::new);
     public static final RegistryObject<Item> FILLED_BIOME_BOTTLE = registerSimpleItem("filled_biome_bottle");
+    public static final RegistryObject<Item> ARID_BIOME_BOTTLE = register("arid_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> HELLISH_BIOME_BOTTLE = register("hellish_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> ICY_BIOME_BOTTLE = register("icy_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> LUSH_BIOME_BOTTLE = register("lush_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> MYCELIC_BIOME_BOTTLE = register("mycelic_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> WATERY_BIOME_BOTTLE = register("watery_biome_bottle", () -> new FoilItem(new Item.Properties()));
 
     public static final RegistryObject<CreativeModeTab> BEES_TAB = CREATIVE_MODE_TAB.register("complicated_bees", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.reclamation_util"))
@@ -43,6 +52,10 @@ public class Items {
     }
 
     private static RegistryObject<Item> registerSimpleItem(String name) {
-        return register(name, () -> new Item(new Item.Properties()));
+        return registerSimpleItem(name, new Item.Properties());
+    }
+
+    private static RegistryObject<Item> registerSimpleItem(String name, Item.Properties prop) {
+        return register(name, () -> new Item(prop));
     }
 }

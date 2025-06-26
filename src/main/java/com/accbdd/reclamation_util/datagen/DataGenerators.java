@@ -58,6 +58,13 @@ public class DataGenerators {
         protected void registerModels() {
             basicItem(Items.EMPTY_BIOME_BOTTLE.get());
             basicItem(Items.FILLED_BIOME_BOTTLE.get());
+            basicItem(Items.ATTUNED_BIOME_BOTTLE.get());
+            basicItem(Items.ARID_BIOME_BOTTLE.get());
+            basicItem(Items.HELLISH_BIOME_BOTTLE.get());
+            basicItem(Items.ICY_BIOME_BOTTLE.get());
+            basicItem(Items.LUSH_BIOME_BOTTLE.get());
+            basicItem(Items.MYCELIC_BIOME_BOTTLE.get());
+            basicItem(Items.WATERY_BIOME_BOTTLE.get());
         }
     }
 }
