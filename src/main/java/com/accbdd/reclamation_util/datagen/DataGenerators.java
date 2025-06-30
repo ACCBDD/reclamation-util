@@ -65,6 +65,7 @@ public class DataGenerators {
             basicItem(Items.LUSH_BIOME_BOTTLE.get());
             basicItem(Items.MYCELIC_BIOME_BOTTLE.get());
             basicItem(Items.WATERY_BIOME_BOTTLE.get());
+            basicItem(Items.SCULK_AWAKENER.get());
         }
     }
 }

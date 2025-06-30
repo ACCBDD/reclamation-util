@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-25T16:05:16.4658933	Item Models: reclamation_util
+// 1.20.1	2025-06-29T23:05:18.1469724	Item Models: reclamation_util
 552ef82c6ac291db3471062388dab0a104850b3e assets/reclamation_util/models/item/arid_biome_bottle.json
 10c95f7aa5c924bcd2b077d9f3695a640b7823c6 assets/reclamation_util/models/item/attuned_biome_bottle.json
 a0a0b59d95f05af96bb20ef96de0db82de5bbe93 assets/reclamation_util/models/item/empty_biome_bottle.json
@@ -7,4 +7,5 @@ d987249d032c90a6f8d6fb6a19f2144a39b038f5 assets/reclamation_util/models/item/fil
 1c2a6969df633188707c53366994b1ee61708ef4 assets/reclamation_util/models/item/icy_biome_bottle.json
 61e17a87e38fb5d86413588c17b49f789fe07aa6 assets/reclamation_util/models/item/lush_biome_bottle.json
 89dbde5779648c111429ef34df8708b51c112c86 assets/reclamation_util/models/item/mycelic_biome_bottle.json
+60c126c31a1123c05f2b62782f5791939f034f3e assets/reclamation_util/models/item/sculk_awakener.json
 204c134a04d05c911bc66a9b50753dc3fea79689 assets/reclamation_util/models/item/watery_biome_bottle.json

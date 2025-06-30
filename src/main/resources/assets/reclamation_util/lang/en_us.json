@@ -8,6 +8,7 @@
   "item.reclamation_util.lush_biome_bottle": "Lush Biome Essence",
   "item.reclamation_util.mycelic_biome_bottle": "Mycelic Biome Essence",
   "item.reclamation_util.watery_biome_bottle": "Watery Biome Essence",
+  "item.reclamation_util.sculk_awakener": "Sculk Awakener",
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
   "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates Aura nearby."

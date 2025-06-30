@@ -3,6 +3,7 @@ package com.accbdd.reclamation_util.register;
 import com.accbdd.reclamation_util.item.EmptyAttunedBiomeBottle;
 import com.accbdd.reclamation_util.item.EmptyBiomeBottle;
 import com.accbdd.reclamation_util.item.FoilItem;
+import com.accbdd.reclamation_util.item.SculkAwakenerItem;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -36,6 +37,7 @@ public class Items {
     public static final RegistryObject<Item> LUSH_BIOME_BOTTLE = register("lush_biome_bottle", () -> new FoilItem(new Item.Properties()));
     public static final RegistryObject<Item> MYCELIC_BIOME_BOTTLE = register("mycelic_biome_bottle", () -> new FoilItem(new Item.Properties()));
     public static final RegistryObject<Item> WATERY_BIOME_BOTTLE = register("watery_biome_bottle", () -> new FoilItem(new Item.Properties()));
+    public static final RegistryObject<Item> SCULK_AWAKENER = register("sculk_awakener", () -> new SculkAwakenerItem(new Item.Properties()));
 
     public static final RegistryObject<CreativeModeTab> BEES_TAB = CREATIVE_MODE_TAB.register("complicated_bees", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.reclamation_util"))
