@@ -1,14 +1,8 @@
 package com.accbdd.reclamation_util.register;
 
-import com.accbdd.reclamation_util.item.EmptyAttunedBiomeBottle;
-import com.accbdd.reclamation_util.item.EmptyBiomeBottle;
-import com.accbdd.reclamation_util.item.FoilItem;
-import com.accbdd.reclamation_util.item.SculkAwakenerItem;
-import net.minecraft.core.RegistryAccess;
+import com.accbdd.reclamation_util.item.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,8 +11,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.function.Supplier;
 
 import static com.accbdd.reclamation_util.ReclamationUtil.MODID;
@@ -38,8 +30,9 @@ public class Items {
     public static final RegistryObject<Item> MYCELIC_BIOME_BOTTLE = register("mycelic_biome_bottle", () -> new FoilItem(new Item.Properties()));
     public static final RegistryObject<Item> WATERY_BIOME_BOTTLE = register("watery_biome_bottle", () -> new FoilItem(new Item.Properties()));
     public static final RegistryObject<Item> SCULK_AWAKENER = register("sculk_awakener", () -> new SculkAwakenerItem(new Item.Properties()));
+    public static final RegistryObject<Item> FRAME_REMOVER = register("frame_remover", () -> new FrameRemoverItem(new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<CreativeModeTab> BEES_TAB = CREATIVE_MODE_TAB.register("complicated_bees", () -> CreativeModeTab.builder()
+    public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TAB.register(MODID, () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.reclamation_util"))
             .icon(() -> Items.FILLED_BIOME_BOTTLE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
