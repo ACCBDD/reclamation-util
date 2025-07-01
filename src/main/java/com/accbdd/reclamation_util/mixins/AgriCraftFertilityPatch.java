@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.mixins;
 
-import com.accbdd.reclamation_util.ReclamationUtil;
 import com.agricraft.agricraft.api.crop.AgriCrop;
 import com.agricraft.agricraft.api.genetic.AgriCrossBreedEngine;
 import com.agricraft.agricraft.api.stat.AgriStat;

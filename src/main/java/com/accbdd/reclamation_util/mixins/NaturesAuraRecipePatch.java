@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.mixins;
 
-import com.accbdd.reclamation_util.ReclamationUtil;
 import de.ellpeck.naturesaura.compat.jei.AnimalSpawnerCategory;
 import de.ellpeck.naturesaura.recipes.AnimalSpawnerRecipe;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
