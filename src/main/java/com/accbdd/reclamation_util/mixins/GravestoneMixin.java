@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public class GravestoneMixin {
 
     @ModifyArg(method = "playerDeath", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z", ordinal = 1), index = 1)
-    private BlockState clay(BlockState state) {
+    private BlockState onPlayerDeath(BlockState state) {
         return Blocks.CLAY.defaultBlockState();
     }
 }

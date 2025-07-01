@@ -3,6 +3,8 @@
   "mixins": [
     "AgriCraftFertilityPatch",
     "GravestoneMixin",
+    "MystAgriHarvesterInvoker",
+    "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch"
   ],
   "client": [

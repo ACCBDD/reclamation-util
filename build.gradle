@@ -20,6 +20,7 @@ println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty '
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
     copyIdeResources = true
+    //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         configureEach {
             workingDirectory project.file('run')
@@ -97,6 +98,9 @@ dependencies {
     implementation fg.deobf("curse.maven:natures-aura-306626:4963590")
     implementation fg.deobf("curse.maven:complicated-bees-1100137:6672873")
     implementation fg.deobf("curse.maven:gravestone-mod-238551:5794082")
+    implementation fg.deobf("curse.maven:mystical-agriculture-246640:6679089")
+    implementation fg.deobf("curse.maven:create-328085:6641603")
+    implementation fg.deobf("curse.maven:cucumber-272335:6680445")
 }
 
 mixin {

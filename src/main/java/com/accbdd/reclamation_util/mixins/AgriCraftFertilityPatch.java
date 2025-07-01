@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AgriCrossBreedEngine.class)
 public class AgriCraftFertilityPatch {
     @Inject(method = "rollFertility", at = @At("HEAD"), cancellable = true, remap = false)
-    private void injectRollFertility(AgriCrop crop, RandomSource random, CallbackInfoReturnable<Boolean> cir) {
+    private void onRollFertility(AgriCrop crop, RandomSource random, CallbackInfoReturnable<Boolean> cir) {
         AgriStat fertility = AgriStatRegistry.getInstance().fertilityStat();
         double adjustedFertility = 5 + crop.getGenome().getStatGene(fertility).getTrait() / 2.0;
         double randomFertility = 1 + (fertility.getMax() - 1) * random.nextDouble();
