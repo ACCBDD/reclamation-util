@@ -14,9 +14,11 @@ Utilities and mixins for the Reclamation modpack.
   * Fertility patch (thanks @Piotr015!)
   * Mystical Agriculture harvester compatibility patch
   * Enchanted Mandrake plant spawn modifier
+  * Create harvester compatibility patch
 * Nature's Aura patches
   * Fixes mobs without spawn eggs recipes breaking in a Birthing Altar recipe
 * Sculk Awakener
   * Turns sculk shriekers into spawning versions
 * Frame Remover
   * A way to break end portal frames and end portal blocks
+* Gravestone mod gravestones generate on clay, not dirt

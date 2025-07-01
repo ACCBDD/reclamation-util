@@ -2,6 +2,7 @@
   "package": "com.accbdd.reclamation_util.mixins",
   "mixins": [
     "AgriCraftFertilityPatch",
+    "CreateHarvesterPatch",
     "GravestoneMixin",
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
