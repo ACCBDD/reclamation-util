@@ -37,7 +37,7 @@ public class ReclamationPlantModifiers {
             if (crop2.isFullyGrown()) {
                 if (breaker instanceof Player && crop2 instanceof CropBlockEntity crop) {
                     Level level = crop.getLevel();
-                    if (level instanceof ServerLevel && (Enchanted.RANDOM.nextInt(5) == 0 || level.isDay())) {
+                    if (level instanceof ServerLevel && shouldSpawn(crop.getGenome().getStrength(), level.isDay())) {
                         Mandrake entity = (Mandrake) ((EntityType) EEntityTypes.MANDRAKE.get()).create(level);
                         BlockPos pos = crop.getBlockPos();
                         entity.moveTo((double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, 0.0F, 0.0F);
@@ -48,6 +48,13 @@ public class ReclamationPlantModifiers {
                 }
             }
             return Optional.empty();
+        }
+
+        public static boolean shouldSpawn(int strength, boolean day) {
+            if (day)
+                return Enchanted.RANDOM.nextFloat() > 0.1*(strength);
+            else
+                return Enchanted.RANDOM.nextFloat() > 0.8+(0.05*strength);
         }
     }
 }

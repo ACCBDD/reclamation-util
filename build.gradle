@@ -96,6 +96,7 @@ dependencies {
     implementation fg.deobf("curse.maven:resourceful-config-714059:6231176")
     implementation fg.deobf("curse.maven:natures-aura-306626:4963590")
     implementation fg.deobf("curse.maven:complicated-bees-1100137:6672873")
+    implementation fg.deobf("curse.maven:gravestone-mod-238551:5794082")
 }
 
 mixin {
