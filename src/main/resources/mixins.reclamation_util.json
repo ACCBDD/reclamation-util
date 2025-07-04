@@ -1,9 +1,11 @@
 {
   "package": "com.accbdd.reclamation_util.mixins",
+  "refmap": "mixins.reclamation_util.refmap.json",
   "mixins": [
     "AgriCraftFertilityPatch",
     "CreateHarvesterPatch",
     "GravestoneMixin",
+    "HornHarvestablePatch",
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch"
