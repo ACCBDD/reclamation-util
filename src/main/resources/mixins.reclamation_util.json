@@ -3,6 +3,7 @@
   "refmap": "mixins.reclamation_util.refmap.json",
   "mixins": [
     "AgriCraftFertilityPatch",
+    "AgriCraftFluidConditionPatch",
     "CreateHarvesterPatch",
     "GravestoneMixin",
     "HornHarvestablePatch",

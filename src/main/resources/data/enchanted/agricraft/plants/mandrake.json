@@ -40,6 +40,9 @@
       "type": "equal_or_higher",
       "tolerance_factor": 0.1,
       "value": "high"
+    },
+    "fluid_condition": {
+      "fluid": "minecraft:water"
     }
   },
   "seeds": [
