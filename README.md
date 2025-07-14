@@ -15,6 +15,9 @@ Utilities and mixins for the Reclamation modpack.
   * Mystical Agriculture harvester compatibility patch
   * Enchanted Mandrake plant spawn modifier
   * Create harvester compatibility patch
+  * Makes fluid condition nonlethal
+* Enchanted patches
+  * Fixes cauldron needing four buckets of water after a completed recipe bug
 * Nature's Aura patches
   * Fixes mobs without spawn eggs recipes breaking in a Birthing Altar recipe
 * Sculk Awakener
@@ -22,3 +25,5 @@ Utilities and mixins for the Reclamation modpack.
 * Frame Remover
   * A way to break end portal frames and end portal blocks
 * Gravestone mod gravestones generate on clay, not dirt
+* More Overlays Updated patches
+  * stops console spam when EMI on top of JEI is used

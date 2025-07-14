@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Mixin(AgriGrowthConditionRegistry.class)
 public class AgriCraftFluidConditionPatch {
-    @Shadow
+    @Shadow(remap = false)
     private final AgriGrowthConditionRegistry.BaseGrowthCondition<FluidState> fluid = new AgriGrowthConditionRegistry.BaseGrowthCondition<>("fluid", (plant, strength, fluid) -> {
         AgriFluidCondition fluidCondition = plant.getGrowthRequirements().fluidCondition();
         List<Fluid> requiredFluids = Platform.get().getFluidsFromLocation(fluidCondition.fluid());

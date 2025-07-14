@@ -5,8 +5,10 @@
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
     "CreateHarvesterPatch",
+    "EnchantedCauldronPatch",
     "GravestoneMixin",
     "HornHarvestablePatch",
+    "MoreOverlaysLogPatch",
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch"

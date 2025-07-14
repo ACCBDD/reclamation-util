@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(HarvesterTileEntity.class)
 public interface MystAgriHarvesterInvoker {
-    @Invoker("addItemToInventory")
+    @Invoker(value = "addItemToInventory", remap = false)
     void invokeAddItemToInventory(ItemStack stack, Level level, BlockPos pos);
 }
