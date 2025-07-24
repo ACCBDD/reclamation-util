@@ -25,7 +25,6 @@ public class FlimsyDoor extends DoorBlock {
         if (!pLevel.isClientSide() && pLevel.getRandom().nextFloat() < 0.1f) {
             pLevel.setBlock(pPos, Blocks.AIR.defaultBlockState(), 3);
             pLevel.playSound(null, pPos, SoundEvents.ITEM_BREAK, SoundSource.BLOCKS);
-            pLevel.addFreshEntity(new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), Items.FLIMSY_DOOR.get().getDefaultInstance()));
             return InteractionResult.CONSUME;
         }
 
