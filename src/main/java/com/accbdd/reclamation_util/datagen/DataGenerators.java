@@ -1,5 +1,7 @@
 package com.accbdd.reclamation_util.datagen;
 
+import com.accbdd.complicated_bees.datagen.BlockTagGenerator;
+import com.accbdd.complicated_bees.datagen.ItemTagGenerator;
 import com.accbdd.reclamation_util.datagen.loot.BlockLootTables;
 import com.accbdd.reclamation_util.register.Blocks;
 import com.accbdd.reclamation_util.register.Items;
@@ -9,13 +11,19 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,9 +41,12 @@ public class DataGenerators {
         PackOutput packOutput = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        BlockTagGenerator blockTagGenerator = new BlockTagGenerator(packOutput, lookupProvider, existingFileHelper);
 
         generator.addProvider(event.includeServer(), new BiomeTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), (DataProvider.Factory<LootTableGenerator>) LootTableGenerator::new);
+        generator.addProvider(event.includeServer(), blockTagGenerator);
+        generator.addProvider(event.includeServer(), new ItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
 
         generator.addProvider(event.includeClient(), new BlockStateGenerator(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ItemModelGenerator(packOutput, existingFileHelper));
@@ -55,6 +66,30 @@ public class DataGenerators {
         protected void addTags(HolderLookup.Provider pProvider) {
             tag(BOTTLE_BLACKLIST).addOptionalTag(ResourceLocation.parse("reclamation:dead"));
             tag(BOTTLE_BLACKLIST).addTag(BiomeTags.IS_NETHER);
+        }
+    }
+
+    public static class ItemTagGenerator extends ItemTagsProvider {
+        public static final TagKey<Item> FRAME = ItemTags.create(ResourceLocation.fromNamespaceAndPath("complicated_bees", "frame"));
+
+        public ItemTagGenerator(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
+            super(pOutput, pLookupProvider, pBlockTags, MODID, existingFileHelper);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider pProvider) {
+            tag(FRAME).add(Items.POISON_FRAME.get(), Items.PERMAFROST_FRAME.get());
+        }
+    }
+
+    public static class BlockTagGenerator extends BlockTagsProvider {
+        public BlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+            super(output, lookupProvider, MODID, existingFileHelper);
+        }
+
+        @Override
+        protected void addTags(HolderLookup.Provider pProvider) {
+            tag(BlockTags.MINEABLE_WITH_AXE).add(Blocks.FLIMSY_DOOR.get());
         }
     }
 
@@ -79,6 +114,7 @@ public class DataGenerators {
             basicItem(Items.FRAME_REMOVER.get());
             basicItem(Items.FLIMSY_DOOR.get());
             basicItem(Items.POISON_FRAME.get());
+            basicItem(Items.PERMAFROST_FRAME.get());
         }
     }
 
