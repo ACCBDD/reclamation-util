@@ -2,6 +2,7 @@
   "package": "com.accbdd.reclamation_util.mixins",
   "refmap": "mixins.reclamation_util.refmap.json",
   "mixins": [
+    "AgriCraftComplexityPatch",
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
     "CreateHarvesterPatch",
