@@ -5,9 +5,9 @@ import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
 import com.accbdd.reclamation_util.register.BeeRegistration;
+import com.accbdd.reclamation_util.register.Blocks;
 import com.accbdd.reclamation_util.register.Items;
 import com.accbdd.reclamation_util.register.Particles;
-import com.agricraft.agricraft.forge.AgriCraftForge;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -34,6 +34,7 @@ public class ReclamationUtil
         modEventBus.addListener(DataGenerators::generate);
 
         Items.REGISTER.register(modEventBus);
+        Blocks.REGISTER.register(modEventBus);
         Items.CREATIVE_MODE_TAB.register(modEventBus);
         BeeRegistration.EFFECTS.register(modEventBus);
     }

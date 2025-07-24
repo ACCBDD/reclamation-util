@@ -10,6 +10,9 @@
   "item.reclamation_util.watery_biome_bottle": "Watery Biome Essence",
   "item.reclamation_util.sculk_awakener": "Sculk Awakener",
   "item.reclamation_util.frame_remover": "Frame Remover",
+  "item.reclamation_util.flimsy_door": "Flimsy Door",
+  "block.reclamation_util.flimsy_door": "Flimsy Door",
+  "item.reclamation_util.poison_frame": "Poisonous Frame",
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
   "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates Aura nearby."

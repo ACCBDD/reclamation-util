@@ -1,5 +1,8 @@
 package com.accbdd.reclamation_util.register;
 
+import com.accbdd.complicated_bees.bees.BeeHousingModifier;
+import com.accbdd.complicated_bees.config.CommonConfig;
+import com.accbdd.complicated_bees.item.FrameItem;
 import com.accbdd.reclamation_util.item.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -31,6 +34,8 @@ public class Items {
     public static final RegistryObject<Item> WATERY_BIOME_BOTTLE = register("watery_biome_bottle", () -> new FoilItem(new Item.Properties()));
     public static final RegistryObject<Item> SCULK_AWAKENER = register("sculk_awakener", () -> new SculkAwakenerItem(new Item.Properties()));
     public static final RegistryObject<Item> FRAME_REMOVER = register("frame_remover", () -> new FrameRemoverItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FLIMSY_DOOR = register("flimsy_door", () -> new FlimsyDoorItem(Blocks.FLIMSY_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<FrameItem> POISON_FRAME = register("poison_frame", () -> new FrameItem(new Item.Properties().durability(60), new BeeHousingModifier.Builder().productivity(0.9f).lifespan(0.75f).build(), CommonConfig.COMMON_CONFIG.frame));
 
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TAB.register(MODID, () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.reclamation_util"))

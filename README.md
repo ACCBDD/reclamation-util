@@ -7,9 +7,11 @@ Utilities and mixins for the Reclamation modpack.
   * Colored leaves
   * Colored dripping liquid
   * Two-tone colored dripping liquid
-* Complicated Bees bee effects
-  * Natural Aura
+* Complicated Bees
+  * Natural Aura effect
+  * Poison Frame (0.75x lifespan, 0.9x productivity)
 * Biome Essence and Attuned Biome Essence
+* Flimsy door
 * Agricraft patches 
   * Fertility patch (thanks @Piotr015!)
   * Mystical Agriculture harvester compatibility patch
