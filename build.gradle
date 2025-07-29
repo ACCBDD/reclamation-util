@@ -30,6 +30,7 @@ minecraft {
             mods {
                 "${mod_id}" {
                     source sourceSets.main
+                    source sourceSets.test
                 }
             }
         }
@@ -56,6 +57,7 @@ minecraft {
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.test.resources { srcDir 'test_resources'}
 
 repositories {
     maven {

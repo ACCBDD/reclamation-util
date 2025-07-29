@@ -1,6 +1,7 @@
 package com.accbdd.reclamation_util;
 
 import com.accbdd.reclamation_util.datagen.DataGenerators;
+import com.accbdd.reclamation_util.naturesaura.ReclaimEffect;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
@@ -9,6 +10,8 @@ import com.accbdd.reclamation_util.register.Blocks;
 import com.accbdd.reclamation_util.register.Items;
 import com.accbdd.reclamation_util.register.Particles;
 import com.mojang.logging.LogUtils;
+import de.ellpeck.naturesaura.api.NaturesAuraAPI;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,6 +44,8 @@ public class ReclamationUtil
 
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         ReclamationPlantModifiers.register();
+        NaturesAuraAPI.DRAIN_SPOT_EFFECTS.put(ReclaimEffect.NAME, ReclaimEffect::new);
+        NaturesAuraAPI.EFFECT_POWDERS.put(ReclaimEffect.NAME, 0xFFCC00);
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

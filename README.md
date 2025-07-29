@@ -22,8 +22,9 @@ Utilities and mixins for the Reclamation modpack.
   * Makes fluid condition nonlethal
 * Enchanted patches
   * Fixes cauldron needing four buckets of water after a completed recipe bug
-* Nature's Aura patches
+* Nature's Aura
   * Fixes mobs without spawn eggs recipes breaking in a Birthing Altar recipe
+  * Adds reclaim effect (turns blocks with a special tag into dirt)
 * Sculk Awakener
   * Turns sculk shriekers into spawning versions
 * Frame Remover

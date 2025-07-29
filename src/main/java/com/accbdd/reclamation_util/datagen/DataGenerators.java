@@ -83,6 +83,7 @@ public class DataGenerators {
     }
 
     public static class BlockTagGenerator extends BlockTagsProvider {
+        public static final TagKey<Block> DRIED_EARTH = BlockTags.create(ResourceLocation.fromNamespaceAndPath("reclamation_util", "dried_earth"));
         public BlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
             super(output, lookupProvider, MODID, existingFileHelper);
         }
@@ -90,6 +91,7 @@ public class DataGenerators {
         @Override
         protected void addTags(HolderLookup.Provider pProvider) {
             tag(BlockTags.MINEABLE_WITH_AXE).add(Blocks.FLIMSY_DOOR.get());
+            tag(DRIED_EARTH).addOptional(ResourceLocation.parse("kubejs:dried_earth"));
         }
     }
 
