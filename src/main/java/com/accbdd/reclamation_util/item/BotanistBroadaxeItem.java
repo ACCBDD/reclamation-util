@@ -1,7 +1,6 @@
 package com.accbdd.reclamation_util.item;
 
 import de.ellpeck.naturesaura.Helper;
-import de.ellpeck.naturesaura.reg.ModItemTier;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;

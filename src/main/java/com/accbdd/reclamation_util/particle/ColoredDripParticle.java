@@ -38,13 +38,13 @@ public class ColoredDripParticle extends TextureSheetParticle {
         this.zo = this.z;
         this.preMoveUpdate();
         if (!this.removed) {
-            this.yd -= (double)this.gravity;
+            this.yd -= this.gravity;
             this.move(this.xd, this.yd, this.zd);
             this.postMoveUpdate();
             if (!this.removed) {
-                this.xd *= (double)0.98F;
-                this.yd *= (double)0.98F;
-                this.zd *= (double)0.98F;
+                this.xd *= 0.98F;
+                this.yd *= 0.98F;
+                this.zd *= 0.98F;
             }
         }
     }
@@ -112,9 +112,9 @@ public class ColoredDripParticle extends TextureSheetParticle {
         }
 
         protected void preMoveUpdate() {
-            this.rCol = color1.x - (color1.x - color2.x) * ((40f-lifetime)/40);
-            this.gCol = color1.y - (color1.y - color2.y) * ((40f-lifetime)/40);
-            this.bCol = color1.z - (color1.z - color2.z) * ((40f-lifetime)/40);
+            this.rCol = color1.x - (color1.x - color2.x) * ((40f - lifetime) / 40);
+            this.gCol = color1.y - (color1.y - color2.y) * ((40f - lifetime) / 40);
+            this.bCol = color1.z - (color1.z - color2.z) * ((40f - lifetime) / 40);
             super.preMoveUpdate();
         }
     }
@@ -123,7 +123,7 @@ public class ColoredDripParticle extends TextureSheetParticle {
     static class ColoredDripLandParticle extends ColoredDripParticle {
         ColoredDripLandParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options) {
             super(pLevel, pX, pY, pZ, options);
-            this.lifetime = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
+            this.lifetime = (int) (16.0D / (Math.random() * 0.8D + 0.2D));
         }
     }
 
@@ -148,7 +148,7 @@ public class ColoredDripParticle extends TextureSheetParticle {
     @OnlyIn(Dist.CLIENT)
     static class FallingParticle extends ColoredDripParticle {
         FallingParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options) {
-            this(pLevel, pX, pY, pZ, options, (int)(64.0D / (Math.random() * 0.8D + 0.2D)));
+            this(pLevel, pX, pY, pZ, options, (int) (64.0D / (Math.random() * 0.8D + 0.2D)));
         }
 
         FallingParticle(ClientLevel pLevel, double pX, double pY, double pZ, ColoredDripOptions options, int pLifetime) {
@@ -182,7 +182,7 @@ public class ColoredDripParticle extends TextureSheetParticle {
         @Nullable
         @Override
         public TextureSheetParticle createParticle(TwoColoredDripOptions pOptions, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-           return createHangParticle(pLevel, pX, pY, pZ, pOptions);
+            return createHangParticle(pLevel, pX, pY, pZ, pOptions);
         }
     }
 

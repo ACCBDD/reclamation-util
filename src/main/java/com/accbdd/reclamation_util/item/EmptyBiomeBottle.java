@@ -1,7 +1,6 @@
 package com.accbdd.reclamation_util.item;
 
 import com.accbdd.reclamation_util.datagen.BiomeTagGenerator;
-import com.accbdd.reclamation_util.datagen.DataGenerators;
 import com.accbdd.reclamation_util.register.Items;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;

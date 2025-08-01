@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.mixins;
 
-import at.ridgo8.moreoverlays.MoreOverlays;
 import at.ridgo8.moreoverlays.itemsearch.JeiModule;
 import at.ridgo8.moreoverlays.util.ReflectionUtil;
 import mezz.jei.api.runtime.IIngredientListOverlay;

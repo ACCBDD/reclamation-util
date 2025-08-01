@@ -2,7 +2,6 @@ package com.accbdd.reclamation_util.item;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
@@ -32,39 +31,50 @@ public class AreaBreakItem extends DiggerItem implements IAreaBreakItem {
         return super.getDestroySpeed(pStack, pState) * 0.65f;
     }
 
-    public static List<BlockPos> getBlocksToBeDestroyed(int range, BlockPos initial, Player player) {
+    public static List<BlockPos> getBlocksToBeDestroyed(int range, int depth, BlockPos initial, Player player) {
         List<BlockPos> positions = new ArrayList<>();
 
         BlockHitResult traceResult = player.level().clip(new ClipContext(player.getEyePosition(1f),
                 (player.getEyePosition(1f).add(player.getViewVector(1f).scale(6f))),
                 ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
-        if(traceResult.getType() == HitResult.Type.MISS) {
+        if (traceResult.getType() == HitResult.Type.MISS) {
             return positions;
         }
 
-        if(traceResult.getDirection().getAxis() == Direction.Axis.Y) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initial.getX() + x, initial.getY(), initial.getZ() + y));
+        if (traceResult.getDirection().getAxis() == Direction.Axis.Y) {
+            for (int y = 0; y < depth; y++) {
+                for (int x = -range; x <= range; x++) {
+                    for (int z = -range; z <= range; z++) {
+                        positions.add(new BlockPos(initial.getX() + x, initial.getY() + y * (traceResult.getDirection() == Direction.UP ? 1 : -1), initial.getZ() + z));
+                    }
                 }
             }
         }
 
-        if(traceResult.getDirection().getAxis() == Direction.Axis.Z) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initial.getX() + x, initial.getY() + y, initial.getZ()));
+        if (traceResult.getDirection().getAxis() == Direction.Axis.Z) {
+            for (int z = 0; z < depth; z++) {
+                for (int x = -range; x <= range; x++) {
+                    for (int y = -range; y <= range; y++) {
+                        positions.add(new BlockPos(initial.getX() + x, initial.getY() + y, initial.getZ() + z * (traceResult.getDirection() == Direction.NORTH ? 1 : -1)));
+                    }
                 }
             }
         }
 
-        if(traceResult.getDirection().getAxis() == Direction.Axis.X) {
-            for(int x = -range; x <= range; x++) {
-                for(int y = -range; y <= range; y++) {
-                    positions.add(new BlockPos(initial.getX(), initial.getY() + y, initial.getZ() + x));
+        if (traceResult.getDirection().getAxis() == Direction.Axis.X) {
+            for (int x = 0; x < depth; x++) {
+                for (int z = -range; z <= range; z++) {
+                    for (int y = -range; y <= range; y++) {
+                        positions.add(new BlockPos(initial.getX() + x * (traceResult.getDirection() == Direction.WEST ? 1 : -1), initial.getY() + y, initial.getZ() + z));
+                    }
                 }
             }
         }
         return positions;
+    }
+
+    @Override
+    public List<BlockPos> getBlocksToDestroy(BlockPos initial, Player player) {
+        return AreaBreakItem.getBlocksToBeDestroyed(1, 1, initial, player);
     }
 }

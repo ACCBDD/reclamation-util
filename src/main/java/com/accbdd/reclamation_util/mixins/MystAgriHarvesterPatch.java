@@ -19,7 +19,7 @@ public abstract class MystAgriHarvesterPatch {
     private static void onTick(Level level, BlockPos pos, BlockState state, HarvesterTileEntity tile, CallbackInfo ci, MachineUpgradeTier tier, Direction direction, boolean isDisabled, int operationTime, BlockPos nextPos, BlockState cropState) {
         if (level.getBlockEntity(nextPos) instanceof CropBlockEntity crop) {
             if (crop.canBeHarvested()) {
-                crop.getHarvestProducts(stack -> ((MystAgriHarvesterInvoker)tile).invokeAddItemToInventory(stack, level, nextPos));
+                crop.getHarvestProducts(stack -> ((MystAgriHarvesterInvoker) tile).invokeAddItemToInventory(stack, level, nextPos));
                 crop.setGrowthStage(crop.getPlant().getGrowthStageAfterHarvest());
                 tile.getEnergy().extractEnergy(tile.getFuelUsage(), false);
             } else {

@@ -1,8 +1,12 @@
 package com.accbdd.reclamation_util.item;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import vazkii.botania.common.item.equipment.tool.manasteel.ManasteelPickaxeItem;
+
+import java.util.List;
 
 public class ManasteelHammerItem extends ManasteelPickaxeItem implements IAreaBreakItem {
     public ManasteelHammerItem(Properties props) {
@@ -17,5 +21,10 @@ public class ManasteelHammerItem extends ManasteelPickaxeItem implements IAreaBr
     @Override
     public int getMaxDamage(ItemStack stack) {
         return super.getMaxDamage(stack) * 3;
+    }
+
+    @Override
+    public List<BlockPos> getBlocksToDestroy(BlockPos initial, Player player) {
+        return AreaBreakItem.getBlocksToBeDestroyed(1, 1, initial, player);
     }
 }

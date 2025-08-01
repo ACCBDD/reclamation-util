@@ -23,13 +23,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 @Mod(ReclamationUtil.MODID)
-public class ReclamationUtil
-{
+public class ReclamationUtil {
     public static final String MODID = "reclamation_util";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ReclamationUtil(FMLJavaModLoadingContext context)
-    {
+    public ReclamationUtil(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(AreaBreakItemUsage::onAreaBreakItemUsage);

@@ -1,7 +1,6 @@
 package com.accbdd.reclamation_util.particle;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 
 public class ColoredDripType extends ParticleType<ColoredDripOptions> {

@@ -19,7 +19,7 @@ public class NaturesAuraRecipePatch {
     @Inject(method = "setRecipe(Lmezz/jei/api/gui/builder/IRecipeLayoutBuilder;Lde/ellpeck/naturesaura/recipes/AnimalSpawnerRecipe;Lmezz/jei/api/recipe/IFocusGroup;)V", cancellable = true, at = @At("HEAD"), remap = false)
     public void onSetRecipe(IRecipeLayoutBuilder builder, AnimalSpawnerRecipe recipe, IFocusGroup focuses, CallbackInfo ci) {
         if (ForgeSpawnEggItem.fromEntityType(recipe.entity) == null) {
-            for(int i = 0; i < recipe.ingredients.length; ++i) {
+            for (int i = 0; i < recipe.ingredients.length; ++i) {
                 builder.addSlot(RecipeIngredientRole.INPUT, i * 18 + 1, 69).addItemStacks(Arrays.asList(recipe.ingredients[i].getItems()));
             }
 

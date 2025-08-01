@@ -2,7 +2,6 @@ package com.accbdd.reclamation_util.item;
 
 import com.accbdd.reclamation_util.register.Items;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SculkChargeParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -42,7 +41,7 @@ public class SculkAwakenerItem extends Item {
             if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
                 serverLevel.setBlock(clickedPos, state.setValue(BlockStateProperties.CAN_SUMMON, true), 3);
                 Vec3 center = clickedPos.getCenter();
-                serverLevel.sendParticles(new SculkChargeParticleOptions(0), center.x, center.y+0.25, center.z, 5, 0.5, 0, 0.5, 0);
+                serverLevel.sendParticles(new SculkChargeParticleOptions(0), center.x, center.y + 0.25, center.z, 5, 0.5, 0, 0.5, 0);
                 serverLevel.playSound(null, clickedPos, SoundEvents.SPLASH_POTION_BREAK, SoundSource.BLOCKS);
                 serverLevel.playSound(null, clickedPos, SoundEvents.SCULK_CLICKING, SoundSource.BLOCKS);
                 if (pContext.getPlayer() != null)

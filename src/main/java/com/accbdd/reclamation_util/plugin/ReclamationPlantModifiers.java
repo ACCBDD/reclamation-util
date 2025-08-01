@@ -52,9 +52,9 @@ public class ReclamationPlantModifiers {
 
         public static boolean shouldSpawn(int strength, boolean day) {
             if (day)
-                return Enchanted.RANDOM.nextFloat() > 0.1*(strength);
+                return Enchanted.RANDOM.nextFloat() > 0.1 * (strength);
             else
-                return Enchanted.RANDOM.nextFloat() > 0.8+(0.05*strength);
+                return Enchanted.RANDOM.nextFloat() > 0.8 + (0.05 * strength);
         }
     }
 }

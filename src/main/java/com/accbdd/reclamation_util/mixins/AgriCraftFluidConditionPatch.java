@@ -4,13 +4,13 @@ import com.agricraft.agricraft.api.codecs.AgriFluidCondition;
 import com.agricraft.agricraft.api.requirement.AgriGrowthConditionRegistry;
 import com.agricraft.agricraft.api.requirement.AgriGrowthResponse;
 import com.agricraft.agricraft.common.util.Platform;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.StateHolder;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.block.state.StateHolder;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Set;
@@ -32,7 +32,7 @@ public class AgriCraftFluidConditionPatch {
             if (fluidCondition.states().isEmpty()) {
                 return AgriGrowthResponse.FERTILE;
             } else {
-               Set<String> list = (Set) fluid.getValues().entrySet().stream().map(StateHolder.PROPERTY_ENTRY_TO_STRING_FUNCTION).collect(Collectors.toSet());
+                Set<String> list = fluid.getValues().entrySet().stream().map(StateHolder.PROPERTY_ENTRY_TO_STRING_FUNCTION).collect(Collectors.toSet());
                 return list.containsAll(fluidCondition.states()) ? AgriGrowthResponse.FERTILE : AgriGrowthResponse.INFERTILE;
             }
         } else {

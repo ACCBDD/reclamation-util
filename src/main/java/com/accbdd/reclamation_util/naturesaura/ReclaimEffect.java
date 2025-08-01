@@ -34,7 +34,7 @@ public class ReclaimEffect implements IDrainSpotEffect {
             if (aura < 1500000) {
                 return false;
             } else {
-                this.amount = Math.min(20, Mth.ceil((float)Math.abs(aura) / 100000.0F / (float) auraAndSpots.getRight()));
+                this.amount = Math.min(20, Mth.ceil((float) Math.abs(aura) / 100000.0F / (float) auraAndSpots.getRight()));
                 if (this.amount <= 1) {
                     return false;
                 } else {
@@ -49,20 +49,20 @@ public class ReclaimEffect implements IDrainSpotEffect {
     public void update(Level level, LevelChunk levelChunk, IAuraChunk iAuraChunk, BlockPos pos, Integer spot, AuraChunk.DrainSpot drainSpot) {
         if (level.getGameTime() % 20L == 0L) {
             if (this.calcValues(level, pos, spot)) {
-                for(int i = this.amount / 2 + level.random.nextInt(this.amount / 2); i >= 0; --i) {
-                    int x = Mth.floor((double)pos.getX() + level.random.nextGaussian() * (double)this.dist);
-                    int y = Mth.floor((double)pos.getY() + level.random.nextGaussian() * (double)this.dist);
-                    int z = Mth.floor((double)pos.getZ() + level.random.nextGaussian() * (double)this.dist);
+                for (int i = this.amount / 2 + level.random.nextInt(this.amount / 2); i >= 0; --i) {
+                    int x = Mth.floor((double) pos.getX() + level.random.nextGaussian() * (double) this.dist);
+                    int y = Mth.floor((double) pos.getY() + level.random.nextGaussian() * (double) this.dist);
+                    int z = Mth.floor((double) pos.getZ() + level.random.nextGaussian() * (double) this.dist);
 
-                    for(int yOff = -5; yOff <= 5; ++yOff) {
+                    for (int yOff = -5; yOff <= 5; ++yOff) {
                         BlockPos goalPos = new BlockPos(x, y + yOff, z);
-                        if (goalPos.distSqr(pos) <= (double)(this.dist * this.dist) && level.isLoaded(goalPos) && !NaturesAuraAPI.instance().isEffectPowderActive(level, goalPos, NAME)) {
+                        if (goalPos.distSqr(pos) <= (double) (this.dist * this.dist) && level.isLoaded(goalPos) && !NaturesAuraAPI.instance().isEffectPowderActive(level, goalPos, NAME)) {
                             BlockState state = level.getBlockState(goalPos);
                             if (state.is(BlockTagGenerator.DRIED_EARTH)) {
                                 level.setBlockAndUpdate(goalPos, Blocks.DIRT.defaultBlockState());
                                 BlockPos closestSpot = IAuraChunk.getHighestSpot(level, goalPos, 25, pos);
                                 IAuraChunk.getAuraChunk(level, closestSpot).drainAura(closestSpot, 500);
-                                PacketHandler.sendToAllAround(level, goalPos, 32, new PacketParticles((float)goalPos.getX(), (float)goalPos.getY() + 0.5F, (float)goalPos.getZ(), PacketParticles.Type.PLANT_BOOST, new int[0]));
+                                PacketHandler.sendToAllAround(level, goalPos, 32, new PacketParticles((float) goalPos.getX(), (float) goalPos.getY() + 0.5F, (float) goalPos.getZ(), PacketParticles.Type.PLANT_BOOST));
                                 break;
                             }
                         }
@@ -87,7 +87,7 @@ public class ReclaimEffect implements IDrainSpotEffect {
     public ActiveType isActiveHere(Player player, LevelChunk chunk, IAuraChunk auraChunk, BlockPos pos, Integer spot) {
         if (!this.calcValues(player.level(), pos, spot)) {
             return ActiveType.INACTIVE;
-        } else if (player.distanceToSqr(pos.getX(), pos.getY(), pos.getZ()) > (double)(this.dist * this.dist)) {
+        } else if (player.distanceToSqr(pos.getX(), pos.getY(), pos.getZ()) > (double) (this.dist * this.dist)) {
             return ActiveType.INACTIVE;
         } else {
             return NaturesAuraAPI.instance().isEffectPowderActive(player.level(), player.blockPosition(), NAME) ? ActiveType.INHIBITED : ActiveType.ACTIVE;
