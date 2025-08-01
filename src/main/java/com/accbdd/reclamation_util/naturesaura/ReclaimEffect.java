@@ -1,6 +1,6 @@
 package com.accbdd.reclamation_util.naturesaura;
 
-import com.accbdd.reclamation_util.datagen.DataGenerators;
+import com.accbdd.reclamation_util.datagen.BlockTagGenerator;
 import de.ellpeck.naturesaura.api.NaturesAuraAPI;
 import de.ellpeck.naturesaura.api.aura.chunk.IAuraChunk;
 import de.ellpeck.naturesaura.api.aura.chunk.IDrainSpotEffect;
@@ -58,7 +58,7 @@ public class ReclaimEffect implements IDrainSpotEffect {
                         BlockPos goalPos = new BlockPos(x, y + yOff, z);
                         if (goalPos.distSqr(pos) <= (double)(this.dist * this.dist) && level.isLoaded(goalPos) && !NaturesAuraAPI.instance().isEffectPowderActive(level, goalPos, NAME)) {
                             BlockState state = level.getBlockState(goalPos);
-                            if (state.is(DataGenerators.BlockTagGenerator.DRIED_EARTH)) {
+                            if (state.is(BlockTagGenerator.DRIED_EARTH)) {
                                 level.setBlockAndUpdate(goalPos, Blocks.DIRT.defaultBlockState());
                                 BlockPos closestSpot = IAuraChunk.getHighestSpot(level, goalPos, 25, pos);
                                 IAuraChunk.getAuraChunk(level, closestSpot).drainAura(closestSpot, 500);

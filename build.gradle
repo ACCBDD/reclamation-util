@@ -19,7 +19,6 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
-    copyIdeResources = true
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         configureEach {
@@ -110,6 +109,7 @@ dependencies {
     implementation fg.deobf("curse.maven:cucumber-272335:6680445")
     implementation fg.deobf("curse.maven:botania-225643:6366547")
     implementation fg.deobf("at.ridgo8:moreoverlays:1.22.1")
+    implementation fg.deobf("curse.maven:mekanism-268560:6552911")
 }
 
 mixin {

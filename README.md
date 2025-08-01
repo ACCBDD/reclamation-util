@@ -11,6 +11,9 @@ Utilities and mixins for the Reclamation modpack.
   * Natural Aura effect
   * Poison Frame (0.75x lifespan, 0.9x productivity)
   * Permafrost Frame (-2 temperature, 0.4x lifespan)
+* Area of effect tools
+  * Hammer, excavator, and broadaxe
+  * Nature's aura and botania compat
 * Biome Essence and Attuned Biome Essence
 * Flimsy door
 * Agricraft patches 
