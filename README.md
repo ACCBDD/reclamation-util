@@ -14,6 +14,8 @@ Utilities and mixins for the Reclamation modpack.
 * Area of effect tools
   * Hammer, excavator, and broadaxe
   * Nature's aura and botania compat
+* Mekanism paxels
+  * Skyseeker, botanists, and manasteel paxels
 * Biome Essence and Attuned Biome Essence
 * Flimsy door
 * Agricraft patches 
