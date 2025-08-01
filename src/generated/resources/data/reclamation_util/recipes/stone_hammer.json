@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "forge:cobblestone"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:stone_hammer"
+  },
+  "show_notification": true
+}

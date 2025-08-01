@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "forge:cobblestone"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AS ",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:stone_broadaxe"
+  },
+  "show_notification": true
+}

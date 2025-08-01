@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "naturesaura:infused_iron"
+    },
+    "S": {
+      "item": "naturesaura:ancient_stick"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:botanist_hammer"
+  },
+  "show_notification": true
+}

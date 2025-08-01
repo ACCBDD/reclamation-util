@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AS ",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:diamond_broadaxe"
+  },
+  "show_notification": true
+}

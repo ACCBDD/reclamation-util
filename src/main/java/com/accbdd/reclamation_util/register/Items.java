@@ -6,12 +6,16 @@ import com.accbdd.complicated_bees.config.CommonConfig;
 import com.accbdd.complicated_bees.item.FrameItem;
 import com.accbdd.reclamation_util.item.*;
 import de.ellpeck.naturesaura.reg.ModItemTier;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
+import vazkii.botania.api.BotaniaAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +59,6 @@ public class Items {
     public static final RegistryObject<Item> NETHERITE_EXCAVATOR = register("netherite_excavator", () -> new ExcavatorItem(Tiers.NETHERITE, 1.5F, -3.0F, (new Item.Properties()).fireResistant()));
     public static final RegistryObject<Item> NETHERITE_HAMMER = register("netherite_hammer", () -> new HammerItem(Tiers.NETHERITE, 1, -2.8F, (new Item.Properties()).fireResistant()));
     public static final RegistryObject<Item> NETHERITE_BROADAXE = register("netherite_broadaxe", () -> new BroadaxeItem(Tiers.NETHERITE, 5.0F, -3.0F, (new Item.Properties()).fireResistant()));
-
     public static final RegistryObject<Item> MANASTEEL_EXCAVATOR = register("manasteel_excavator", () -> new ManasteelExcavatorItem(new Item.Properties()));
     public static final RegistryObject<Item> MANASTEEL_HAMMER = register("manasteel_hammer", () -> new ManasteelHammerItem(new Item.Properties()));
     public static final RegistryObject<Item> MANASTEEL_BROADAXE = register("manasteel_broadaxe", () -> new ManasteelBroadaxeItem(new Item.Properties()));
@@ -65,6 +68,9 @@ public class Items {
     public static final RegistryObject<Item> SKY_EXCAVATOR = register("sky_excavator", () -> new BotanistExcavatorItem(ModItemTier.SKY, 1.5f, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SKY_HAMMER = register("sky_hammer", () -> new BotanistHammerItem(ModItemTier.SKY, 1f, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> SKY_BROADAXE = register("sky_broadaxe", () -> new BotanistBroadaxeItem(ModItemTier.SKY, 6f, -3.2f, new Item.Properties()));
+    public static final RegistryObject<Item> MANASTEEL_PAXEL = register("manasteel_paxel", () -> new ManasteelPaxelItem(BotaniaAPI.instance().getManasteelItemTier(), 6.5f, -2.4f, new Item.Properties()));
+    public static final RegistryObject<Item> BOTANIST_PAXEL = register("botanist_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.INFUSED, new Item.Properties()) );
+    public static final RegistryObject<Item> SKY_PAXEL = register("sky_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.SKY, new Item.Properties()));
 
     public static final RegistryObject<FrameItem> POISON_FRAME = register("poison_frame", () -> new FrameItem(new Item.Properties().durability(60), new BeeHousingModifier.Builder().productivity(0.9f).lifespan(0.75f).build(), CommonConfig.COMMON_CONFIG.frame));
     public static final RegistryObject<FrameItem> PERMAFROST_FRAME = register("permafrost_frame", () -> new FrameItem(new Item.Properties().durability(120), new BeeHousingModifier.Builder().temperature(EnumTolerance.DOWN_2).lifespan(0.4f).build(), CommonConfig.COMMON_CONFIG.frame) {

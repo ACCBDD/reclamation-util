@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " SA",
+    "S A"
+  ],
+  "result": {
+    "item": "reclamation_util:wooden_excavator"
+  },
+  "show_notification": true
+}

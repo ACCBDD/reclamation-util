@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "naturesaura:sky_ingot"
+    },
+    "S": {
+      "item": "naturesaura:ancient_stick"
+    }
+  },
+  "pattern": [
+    "AAA",
+    " SA",
+    "S A"
+  ],
+  "result": {
+    "item": "reclamation_util:sky_excavator"
+  },
+  "show_notification": true
+}

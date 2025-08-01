@@ -55,5 +55,8 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.SKY_EXCAVATOR.get());
         basicItem(Items.SKY_HAMMER.get());
         basicItem(Items.SKY_BROADAXE.get());
+        basicItem(Items.MANASTEEL_PAXEL.get());
+        basicItem(Items.BOTANIST_PAXEL.get());
+        basicItem(Items.SKY_PAXEL.get());
     }
 }

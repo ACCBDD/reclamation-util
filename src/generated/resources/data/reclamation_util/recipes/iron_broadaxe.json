@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AS ",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:iron_broadaxe"
+  },
+  "show_notification": true
+}

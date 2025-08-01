@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ASA",
+    " S "
+  ],
+  "result": {
+    "item": "reclamation_util:wooden_hammer"
+  },
+  "show_notification": true
+}
