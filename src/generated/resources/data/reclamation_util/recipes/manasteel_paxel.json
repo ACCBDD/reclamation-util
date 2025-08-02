@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "botania:manasteel_axe"
+    },
+    "P": {
+      "item": "botania:manasteel_pick"
+    },
+    "R": {
+      "item": "botania:livingwood_twig"
+    },
+    "S": {
+      "item": "botania:manasteel_shovel"
+    }
+  },
+  "pattern": [
+    "APS",
+    " R ",
+    " R "
+  ],
+  "result": {
+    "item": "reclamation_util:manasteel_paxel"
+  },
+  "show_notification": true
+}

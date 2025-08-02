@@ -2,6 +2,7 @@ package com.accbdd.reclamation_util.datagen;
 
 import com.accbdd.reclamation_util.register.Items;
 import de.ellpeck.naturesaura.items.ModItems;
+import mekanism.tools.common.recipe.PaxelRecipe;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -49,6 +50,22 @@ public class RecipeGenerator extends RecipeProvider {
         excavatorRecipe(output, Items.SKY_EXCAVATOR.get(), Ingredient.of(ModItems.SKY_INGOT), Ingredient.of(ModItems.ANCIENT_STICK));
         hammerRecipe(output, Items.SKY_HAMMER.get(), Ingredient.of(ModItems.SKY_INGOT), Ingredient.of(ModItems.ANCIENT_STICK));
         broadaxeRecipe(output, Items.SKY_BROADAXE.get(), Ingredient.of(ModItems.SKY_INGOT), Ingredient.of(ModItems.ANCIENT_STICK));
+        paxelRecipe(output, Items.BOTANIST_PAXEL.get(), Ingredient.of(ModItems.INFUSED_IRON_AXE), Ingredient.of(ModItems.INFUSED_IRON_PICKAXE), Ingredient.of(ModItems.INFUSED_IRON_SHOVEL), Ingredient.of(ModItems.ANCIENT_STICK));
+        paxelRecipe(output, Items.SKY_PAXEL.get(), Ingredient.of(ModItems.SKY_AXE), Ingredient.of(ModItems.SKY_PICKAXE), Ingredient.of(ModItems.SKY_SHOVEL), Ingredient.of(ModItems.ANCIENT_STICK));
+        paxelRecipe(output, Items.MANASTEEL_PAXEL.get(), Ingredient.of(BotaniaItems.manasteelAxe), Ingredient.of(BotaniaItems.manasteelPick), Ingredient.of(BotaniaItems.manasteelShovel), Ingredient.of(BotaniaItems.livingwoodTwig));
+    }
+
+    private static void paxelRecipe(Consumer<FinishedRecipe> output, ItemLike result, Ingredient axe, Ingredient pick, Ingredient shovel, Ingredient stick) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result)
+                .pattern("APS")
+                .pattern(" R ")
+                .pattern(" R ")
+                .define('A', axe)
+                .define('P', pick)
+                .define('S', shovel)
+                .define('R', stick)
+                .unlockedBy("has_result", has(result))
+                .save(output);
     }
 
     private static void hammerRecipe(Consumer<FinishedRecipe> output, ItemLike result, Ingredient head, Ingredient stick) {

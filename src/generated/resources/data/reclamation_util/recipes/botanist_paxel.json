@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "naturesaura:infused_iron_axe"
+    },
+    "P": {
+      "item": "naturesaura:infused_iron_pickaxe"
+    },
+    "R": {
+      "item": "naturesaura:ancient_stick"
+    },
+    "S": {
+      "item": "naturesaura:infused_iron_shovel"
+    }
+  },
+  "pattern": [
+    "APS",
+    " R ",
+    " R "
+  ],
+  "result": {
+    "item": "reclamation_util:botanist_paxel"
+  },
+  "show_notification": true
+}

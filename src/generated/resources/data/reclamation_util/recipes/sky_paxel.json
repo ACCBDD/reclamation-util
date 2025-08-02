@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "naturesaura:sky_axe"
+    },
+    "P": {
+      "item": "naturesaura:sky_pickaxe"
+    },
+    "R": {
+      "item": "naturesaura:ancient_stick"
+    },
+    "S": {
+      "item": "naturesaura:sky_shovel"
+    }
+  },
+  "pattern": [
+    "APS",
+    " R ",
+    " R "
+  ],
+  "result": {
+    "item": "reclamation_util:sky_paxel"
+  },
+  "show_notification": true
+}
