@@ -2,8 +2,10 @@ package com.accbdd.reclamation_util.datagen;
 
 import com.accbdd.reclamation_util.register.Items;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import static com.accbdd.reclamation_util.ReclamationUtil.MODID;
 
@@ -28,35 +30,40 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.FLIMSY_DOOR.get());
         basicItem(Items.POISON_FRAME.get());
         basicItem(Items.PERMAFROST_FRAME.get());
-        basicItem(Items.WOODEN_EXCAVATOR.get());
-        basicItem(Items.WOODEN_HAMMER.get());
-        basicItem(Items.WOODEN_BROADAXE.get());
-        basicItem(Items.STONE_EXCAVATOR.get());
-        basicItem(Items.STONE_HAMMER.get());
-        basicItem(Items.STONE_BROADAXE.get());
-        basicItem(Items.GOLDEN_EXCAVATOR.get());
-        basicItem(Items.GOLDEN_HAMMER.get());
-        basicItem(Items.GOLDEN_BROADAXE.get());
-        basicItem(Items.IRON_EXCAVATOR.get());
-        basicItem(Items.IRON_HAMMER.get());
-        basicItem(Items.IRON_BROADAXE.get());
-        basicItem(Items.DIAMOND_EXCAVATOR.get());
-        basicItem(Items.DIAMOND_HAMMER.get());
-        basicItem(Items.DIAMOND_BROADAXE.get());
-        basicItem(Items.NETHERITE_EXCAVATOR.get());
-        basicItem(Items.NETHERITE_HAMMER.get());
-        basicItem(Items.NETHERITE_BROADAXE.get());
-        basicItem(Items.MANASTEEL_EXCAVATOR.get());
-        basicItem(Items.MANASTEEL_HAMMER.get());
-        basicItem(Items.MANASTEEL_BROADAXE.get());
-        basicItem(Items.BOTANIST_EXCAVATOR.get());
-        basicItem(Items.BOTANIST_HAMMER.get());
-        basicItem(Items.BOTANIST_BROADAXE.get());
-        basicItem(Items.SKY_EXCAVATOR.get());
-        basicItem(Items.SKY_HAMMER.get());
-        basicItem(Items.SKY_BROADAXE.get());
-        basicItem(Items.MANASTEEL_PAXEL.get());
-        basicItem(Items.BOTANIST_PAXEL.get());
-        basicItem(Items.SKY_PAXEL.get());
+        toolItem(Items.WOODEN_EXCAVATOR.get());
+        toolItem(Items.WOODEN_HAMMER.get());
+        toolItem(Items.WOODEN_BROADAXE.get());
+        toolItem(Items.STONE_EXCAVATOR.get());
+        toolItem(Items.STONE_HAMMER.get());
+        toolItem(Items.STONE_BROADAXE.get());
+        toolItem(Items.GOLDEN_EXCAVATOR.get());
+        toolItem(Items.GOLDEN_HAMMER.get());
+        toolItem(Items.GOLDEN_BROADAXE.get());
+        toolItem(Items.IRON_EXCAVATOR.get());
+        toolItem(Items.IRON_HAMMER.get());
+        toolItem(Items.IRON_BROADAXE.get());
+        toolItem(Items.DIAMOND_EXCAVATOR.get());
+        toolItem(Items.DIAMOND_HAMMER.get());
+        toolItem(Items.DIAMOND_BROADAXE.get());
+        toolItem(Items.NETHERITE_EXCAVATOR.get());
+        toolItem(Items.NETHERITE_HAMMER.get());
+        toolItem(Items.NETHERITE_BROADAXE.get());
+        toolItem(Items.MANASTEEL_EXCAVATOR.get());
+        toolItem(Items.MANASTEEL_HAMMER.get());
+        toolItem(Items.MANASTEEL_BROADAXE.get());
+        toolItem(Items.BOTANIST_EXCAVATOR.get());
+        toolItem(Items.BOTANIST_HAMMER.get());
+        toolItem(Items.BOTANIST_BROADAXE.get());
+        toolItem(Items.SKY_EXCAVATOR.get());
+        toolItem(Items.SKY_HAMMER.get());
+        toolItem(Items.SKY_BROADAXE.get());
+        toolItem(Items.MANASTEEL_PAXEL.get());
+        toolItem(Items.BOTANIST_PAXEL.get());
+        toolItem(Items.SKY_PAXEL.get());
+    }
+
+    private void toolItem(Item item) {
+        withExistingParent(ForgeRegistries.ITEMS.getKey(item).getPath(), "minecraft:item/handheld")
+                .texture("layer0", ForgeRegistries.ITEMS.getKey(item).getNamespace() + ":item/" + ForgeRegistries.ITEMS.getKey(item).getPath());
     }
 }

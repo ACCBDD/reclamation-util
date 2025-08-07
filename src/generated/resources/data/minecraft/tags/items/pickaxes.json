@@ -1,0 +1,13 @@
+{
+  "values": [
+    "reclamation_util:wooden_hammer",
+    "reclamation_util:stone_hammer",
+    "reclamation_util:golden_hammer",
+    "reclamation_util:iron_hammer",
+    "reclamation_util:diamond_hammer",
+    "reclamation_util:netherite_hammer",
+    "reclamation_util:manasteel_hammer",
+    "reclamation_util:botanist_hammer",
+    "reclamation_util:sky_hammer"
+  ]
+}

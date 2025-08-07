@@ -1,0 +1,13 @@
+{
+  "values": [
+    "reclamation_util:wooden_excavator",
+    "reclamation_util:stone_excavator",
+    "reclamation_util:golden_excavator",
+    "reclamation_util:iron_excavator",
+    "reclamation_util:diamond_excavator",
+    "reclamation_util:netherite_excavator",
+    "reclamation_util:manasteel_excavator",
+    "reclamation_util:botanist_excavator",
+    "reclamation_util:sky_excavator"
+  ]
+}

@@ -1,2 +1,6 @@
-// 1.20.1	2025-07-24T03:29:40.2278897	Tags for minecraft:item mod id reclamation_util
+// 1.20.1	2025-08-06T17:07:31.6748221	Tags for minecraft:item mod id reclamation_util
 e09ccc4bc95c4c6109e5164f22bee28a224756b4 data/complicated_bees/tags/items/frame.json
+6256fab0afbda46f349d3edb853f796ad0922fd2 data/forge/tags/items/tools/paxels.json
+6eeca99da1007b15f6c8e8faedc78c9207e19d2b data/minecraft/tags/items/axes.json
+70e1a6df5fd7e65459dc2ceaf8f79e961172e82a data/minecraft/tags/items/pickaxes.json
+7d6f251b568bec821dd659791949a31013501754 data/minecraft/tags/items/shovels.json
