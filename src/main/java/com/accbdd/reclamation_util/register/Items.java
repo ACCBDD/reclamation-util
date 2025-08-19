@@ -6,15 +6,13 @@ import com.accbdd.complicated_bees.config.CommonConfig;
 import com.accbdd.complicated_bees.item.FrameItem;
 import com.accbdd.reclamation_util.item.*;
 import de.ellpeck.naturesaura.reg.ModItemTier;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.Nullable;
 import vazkii.botania.api.BotaniaAPI;
 
 import java.util.ArrayList;
@@ -40,6 +38,23 @@ public class Items {
     public static final RegistryObject<Item> SCULK_AWAKENER = register("sculk_awakener", () -> new SculkAwakenerItem(new Item.Properties()));
     public static final RegistryObject<Item> FRAME_REMOVER = register("frame_remover", () -> new FrameRemoverItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> FLIMSY_DOOR = register("flimsy_door", () -> new FlimsyDoorItem(Blocks.FLIMSY_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> EMPTY_BIOME_GLOBE = register("empty_biome_globe", EmptyBiomeGlobeItem::new);
+    public static final RegistryObject<Item> PLAINS_BIOME_GLOBE = register("plains_biome_globe", () -> new BiomeGlobeItem(Biomes.PLAINS,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.GRASS_BLOCK.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> DESERT_BIOME_GLOBE = register("desert_biome_globe", () -> new BiomeGlobeItem(Biomes.DESERT,
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> FOREST_BIOME_GLOBE = register("forest_biome_globe", () -> new BiomeGlobeItem(Biomes.FOREST,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.GRASS_BLOCK.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> OCEAN_BIOME_GLOBE = register("ocean_biome_globe", () -> new BiomeGlobeItem(Biomes.OCEAN,
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            true));
 
     public static final RegistryObject<Item> WOODEN_EXCAVATOR = register("wooden_excavator", () -> new ExcavatorItem(Tiers.WOOD, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_HAMMER = register("wooden_hammer", () -> new HammerItem(Tiers.WOOD, 1, -2.8F, new Item.Properties()));

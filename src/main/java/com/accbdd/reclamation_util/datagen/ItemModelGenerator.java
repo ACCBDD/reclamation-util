@@ -30,6 +30,11 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.FLIMSY_DOOR.get());
         basicItem(Items.POISON_FRAME.get());
         basicItem(Items.PERMAFROST_FRAME.get());
+        basicItem(Items.EMPTY_BIOME_GLOBE.get());
+        basicItem(Items.PLAINS_BIOME_GLOBE.get());
+        basicItem(Items.DESERT_BIOME_GLOBE.get());
+        basicItem(Items.FOREST_BIOME_GLOBE.get());
+        basicItem(Items.OCEAN_BIOME_GLOBE.get());
         toolItem(Items.WOODEN_EXCAVATOR.get());
         toolItem(Items.WOODEN_HAMMER.get());
         toolItem(Items.WOODEN_BROADAXE.get());

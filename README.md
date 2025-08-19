@@ -17,6 +17,7 @@ Utilities and mixins for the Reclamation modpack.
 * Mekanism paxels
   * Skyseeker, botanists, and manasteel paxels
 * Biome Essence and Attuned Biome Essence
+* Biome Globes
 * Flimsy door
 * Agricraft patches 
   * Fertility patch (thanks @Piotr015!)
