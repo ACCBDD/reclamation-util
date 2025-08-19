@@ -1,5 +1,6 @@
 package com.accbdd.reclamation_util.item;
 
+import com.accbdd.reclamation_util.datagen.BiomeTagGenerator;
 import com.accbdd.reclamation_util.register.Items;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -46,7 +47,7 @@ public class EmptyAttunedBiomeBottle extends FoilItem {
             Holder<Biome> biome = pLevel.getBiome(pLivingEntity.blockPosition());
             if (biome.is(Biomes.DESERT))
                 collectBottle(pStack, player, Items.ARID_BIOME_BOTTLE.get());
-            else if (biome.is(BiomeTags.IS_NETHER))
+            else if (biome.is(BiomeTagGenerator.LIVING_NETHER))
                 collectBottle(pStack, player, Items.HELLISH_BIOME_BOTTLE.get());
             else if (biome.is(Biomes.SNOWY_SLOPES))
                 collectBottle(pStack, player, Items.ICY_BIOME_BOTTLE.get());
