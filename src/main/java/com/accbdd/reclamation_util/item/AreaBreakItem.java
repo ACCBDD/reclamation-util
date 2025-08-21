@@ -45,7 +45,7 @@ public class AreaBreakItem extends DiggerItem implements IAreaBreakItem {
             for (int y = 0; y < depth; y++) {
                 for (int x = -range; x <= range; x++) {
                     for (int z = -range; z <= range; z++) {
-                        positions.add(new BlockPos(initial.getX() + x, initial.getY() + y * (traceResult.getDirection() == Direction.UP ? 1 : -1), initial.getZ() + z));
+                        positions.add(new BlockPos(initial.getX() + x, initial.getY() + y * (traceResult.getDirection() == Direction.UP ? -1 : 1), initial.getZ() + z));
                     }
                 }
             }

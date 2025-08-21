@@ -20,7 +20,7 @@ public class AreaBreakItemUsage {
 
         if (mainHandItem.getItem() instanceof DiggerItem tool && mainHandItem.getItem() instanceof IAreaBreakItem areaItem && player instanceof ServerPlayer serverPlayer) {
             BlockPos initial = event.getPos();
-            if (HARVESTED_BLOCKS.contains(initial) || serverPlayer.isCrouching()) {
+            if (HARVESTED_BLOCKS.contains(initial) || serverPlayer.isCrouching() || !tool.isCorrectToolForDrops(mainHandItem, event.getLevel().getBlockState(initial))) {
                 return;
             }
 
