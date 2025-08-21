@@ -55,6 +55,36 @@ public class Items {
             net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
             net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
             true));
+    public static final RegistryObject<Item> WARM_OCEAN_BIOME_GLOBE = register("warm_ocean_biome_globe", () -> new BiomeGlobeItem(Biomes.WARM_OCEAN,
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.SAND.defaultBlockState(),
+            true));
+    public static final RegistryObject<Item> TAIGA_BIOME_GLOBE = register("taiga_biome_globe", () -> new BiomeGlobeItem(Biomes.TAIGA,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.PODZOL.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> CRIMSON_BIOME_GLOBE = register("crimson_biome_globe", () -> new BiomeGlobeItem(Biomes.CRIMSON_FOREST,
+            net.minecraft.world.level.block.Blocks.NETHERRACK.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.CRIMSON_NYLIUM.defaultBlockState(),
+            true));
+    public static final RegistryObject<Item> WARPED_BIOME_GLOBE = register("warped_biome_globe", () -> new BiomeGlobeItem(Biomes.WARPED_FOREST,
+            net.minecraft.world.level.block.Blocks.NETHERRACK.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.WARPED_NYLIUM.defaultBlockState(),
+            true));
+    public static final RegistryObject<Item> LUSH_BIOME_GLOBE = register("lush_biome_globe", () -> new BiomeGlobeItem(Biomes.BAMBOO_JUNGLE,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.GRASS_BLOCK.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> MYCELIC_BIOME_GLOBE = register("mycelic_biome_globe", () -> new BiomeGlobeItem(Biomes.MUSHROOM_FIELDS,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.MYCELIUM.defaultBlockState(),
+            false));
+    public static final RegistryObject<Item> SNOWY_BIOME_GLOBE = register("snowy_biome_globe", () -> new BiomeGlobeItem(Biomes.SNOWY_SLOPES,
+            net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
+            net.minecraft.world.level.block.Blocks.GRASS_BLOCK.defaultBlockState(),
+            false));
+
+    public static final RegistryObject<Item> GLOBESOME = register("globesome", GlobesomeItem::new);
 
     public static final RegistryObject<Item> WOODEN_EXCAVATOR = register("wooden_excavator", () -> new ExcavatorItem(Tiers.WOOD, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_HAMMER = register("wooden_hammer", () -> new HammerItem(Tiers.WOOD, 1, -2.8F, new Item.Properties()));
