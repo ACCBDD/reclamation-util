@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.datagen;
 
-import com.accbdd.reclamation_util.register.Blocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +23,6 @@ public class BlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(BlockTags.MINEABLE_WITH_AXE).add(Blocks.FLIMSY_DOOR.get());
         tag(DRIED_EARTH).addOptional(ResourceLocation.parse("kubejs:dried_earth"));
     }
 }

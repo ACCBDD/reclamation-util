@@ -1,19 +1,17 @@
 package com.accbdd.reclamation_util.register;
 
-import com.accbdd.complicated_bees.bees.BeeHousingModifier;
-import com.accbdd.complicated_bees.bees.gene.enums.EnumTolerance;
-import com.accbdd.complicated_bees.config.CommonConfig;
-import com.accbdd.complicated_bees.item.FrameItem;
 import com.accbdd.reclamation_util.item.*;
 import de.ellpeck.naturesaura.reg.ModItemTier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import vazkii.botania.api.BotaniaAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +35,6 @@ public class Items {
     public static final RegistryObject<Item> WATERY_BIOME_BOTTLE = register("watery_biome_bottle", () -> new FoilItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SCULK_AWAKENER = register("sculk_awakener", () -> new SculkAwakenerItem(new Item.Properties()));
     public static final RegistryObject<Item> FRAME_REMOVER = register("frame_remover", () -> new FrameRemoverItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> FLIMSY_DOOR = register("flimsy_door", () -> new FlimsyDoorItem(Blocks.FLIMSY_DOOR.get(), new Item.Properties()));
     public static final RegistryObject<Item> EMPTY_BIOME_GLOBE = register("empty_biome_globe", EmptyBiomeGlobeItem::new);
     public static final RegistryObject<Item> PLAINS_BIOME_GLOBE = register("plains_biome_globe", () -> new BiomeGlobeItem(Biomes.PLAINS,
             net.minecraft.world.level.block.Blocks.DIRT.defaultBlockState(),
@@ -113,17 +110,7 @@ public class Items {
     public static final RegistryObject<Item> SKY_EXCAVATOR = register("sky_excavator", () -> new BotanistExcavatorItem(ModItemTier.SKY, 1.5f, -3.0f, new Item.Properties()));
     public static final RegistryObject<Item> SKY_HAMMER = register("sky_hammer", () -> new BotanistHammerItem(ModItemTier.SKY, 1f, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> SKY_BROADAXE = register("sky_broadaxe", () -> new BotanistBroadaxeItem(ModItemTier.SKY, 6f, -3.2f, new Item.Properties()));
-    public static final RegistryObject<Item> MANASTEEL_PAXEL = register("manasteel_paxel", () -> new ManasteelPaxelItem(BotaniaAPI.instance().getManasteelItemTier(), 6.5f, -2.4f, new Item.Properties()));
-    public static final RegistryObject<Item> BOTANIST_PAXEL = register("botanist_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.INFUSED, new Item.Properties()) );
-    public static final RegistryObject<Item> SKY_PAXEL = register("sky_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.SKY, new Item.Properties()));
 
-    public static final RegistryObject<FrameItem> POISON_FRAME = register("poison_frame", () -> new FrameItem(new Item.Properties().durability(60), new BeeHousingModifier.Builder().productivity(0.9f).lifespan(0.75f).build(), CommonConfig.COMMON_CONFIG.frame));
-    public static final RegistryObject<FrameItem> PERMAFROST_FRAME = register("permafrost_frame", () -> new FrameItem(new Item.Properties().durability(120), new BeeHousingModifier.Builder().temperature(EnumTolerance.DOWN_2).lifespan(0.4f).build(), CommonConfig.COMMON_CONFIG.frame) {
-        @Override
-        public boolean isFoil(ItemStack pStack) {
-            return true;
-        }
-    });
 
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TAB.register(MODID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.reclamation_util")).icon(() -> Items.FILLED_BIOME_BOTTLE.get().getDefaultInstance()).displayItems((parameters, output) -> {
         for (RegistryObject<?> item : Items.CREATIVE_TAB_ITEMS) {

@@ -1,6 +1,5 @@
 package com.accbdd.reclamation_util.item;
 
-import com.accbdd.complicated_bees.bees.GeneticHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -130,7 +129,7 @@ public class BiomeGlobeItem extends Item {
             BoundingBox boundingBox = BoundingBox.fromCorners(quantize(pos.offset(-2, -2, -2)), quantize(pos.offset(2, 2, 2)));
             chunkaccess.fillBiomesFromNoise(makeResolver(chunkaccess,
                     boundingBox,
-                    GeneticHelper.getRegistryAccess().registry(Registries.BIOME).get().getHolder(biome).get()), level.getChunkSource().randomState().sampler());
+                    level.registryAccess().registry(Registries.BIOME).get().getHolder(biome).get()), level.getChunkSource().randomState().sampler());
             chunkaccess.setUnsaved(true);
             if (level.getBiome(quantize(pos)).is(biome)) {
                 chunks.add(chunkaccess);

@@ -102,15 +102,10 @@ dependencies {
     implementation fg.deobf("curse.maven:agricraft-225635:5899444")
     implementation fg.deobf("curse.maven:resourceful-config-714059:6231176")
     implementation fg.deobf("curse.maven:natures-aura-306626:4963590")
-    implementation fg.deobf("curse.maven:complicated-bees-1100137:6672873")
     implementation fg.deobf("curse.maven:gravestone-mod-238551:5794082")
-    implementation fg.deobf("curse.maven:mystical-agriculture-246640:6679089")
     implementation fg.deobf("curse.maven:create-328085:6641603")
     implementation fg.deobf("curse.maven:cucumber-272335:6680445")
     implementation fg.deobf("curse.maven:botania-225643:6366547")
-    implementation fg.deobf("at.ridgo8:moreoverlays:1.22.1")
-    implementation fg.deobf("curse.maven:mekanism-268560:6552911")
-    implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
 }
 
 mixin {

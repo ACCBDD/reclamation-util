@@ -27,9 +27,6 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.WATERY_BIOME_BOTTLE.get());
         basicItem(Items.SCULK_AWAKENER.get());
         basicItem(Items.FRAME_REMOVER.get());
-        basicItem(Items.FLIMSY_DOOR.get());
-        basicItem(Items.POISON_FRAME.get());
-        basicItem(Items.PERMAFROST_FRAME.get());
         basicItem(Items.EMPTY_BIOME_GLOBE.get());
         basicItem(Items.PLAINS_BIOME_GLOBE.get());
         basicItem(Items.DESERT_BIOME_GLOBE.get());
@@ -70,9 +67,6 @@ public class ItemModelGenerator extends ItemModelProvider {
         toolItem(Items.SKY_EXCAVATOR.get());
         toolItem(Items.SKY_HAMMER.get());
         toolItem(Items.SKY_BROADAXE.get());
-        toolItem(Items.MANASTEEL_PAXEL.get());
-        toolItem(Items.BOTANIST_PAXEL.get());
-        toolItem(Items.SKY_PAXEL.get());
     }
 
     private void toolItem(Item item) {
