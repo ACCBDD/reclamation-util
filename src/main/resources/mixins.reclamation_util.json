@@ -5,13 +5,8 @@
     "AgriCraftComplexityPatch",
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
-    "CreateHarvesterPatch",
     "EnchantedCauldronPatch",
     "GravestoneMixin",
-    "HornHarvestablePatch",
-    "MoreOverlaysLogPatch",
-    "MystAgriHarvesterInvoker",
-    "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch"
   ],
   "client": [
