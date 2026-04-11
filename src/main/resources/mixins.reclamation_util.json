@@ -8,7 +8,6 @@
     "CreateHarvesterPatch",
     "EnchantedCauldronPatch",
     "GravestoneMixin",
-    "HornHarvestablePatch",
     "MoreOverlaysLogPatch",
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
