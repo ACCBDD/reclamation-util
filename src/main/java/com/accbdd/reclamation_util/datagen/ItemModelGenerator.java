@@ -43,6 +43,8 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.MYCELIC_BIOME_GLOBE.get());
         basicItem(Items.SNOWY_BIOME_GLOBE.get());
         basicItem(Items.GLOBESOME.get());
+        basicItem(Items.WATERING_CAN.get());
+        basicItem(Items.REINFORCED_WATERING_CAN.get());
         toolItem(Items.WOODEN_EXCAVATOR.get());
         toolItem(Items.WOODEN_HAMMER.get());
         toolItem(Items.WOODEN_BROADAXE.get());

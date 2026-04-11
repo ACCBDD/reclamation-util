@@ -125,6 +125,9 @@ public class Items {
         }
     });
 
+    public static final RegistryObject<WateringCanItem> WATERING_CAN = register("watering_can", () -> new WateringCanItem(3, 0.25));
+    public static final RegistryObject<WateringCanItem> REINFORCED_WATERING_CAN = register("reinforced_watering_can", () -> new WateringCanItem(7, 0.35));
+
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TAB.register(MODID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.reclamation_util")).icon(() -> Items.FILLED_BIOME_BOTTLE.get().getDefaultInstance()).displayItems((parameters, output) -> {
         for (RegistryObject<?> item : Items.CREATIVE_TAB_ITEMS) {
             output.accept((Item) item.get());

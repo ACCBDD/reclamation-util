@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-21T16:22:50.1585603	Item Models: reclamation_util
+// 1.20.1	2026-04-10T19:01:07.6191218	Item Models: reclamation_util
 552ef82c6ac291db3471062388dab0a104850b3e assets/reclamation_util/models/item/arid_biome_bottle.json
 10c95f7aa5c924bcd2b077d9f3695a640b7823c6 assets/reclamation_util/models/item/attuned_biome_bottle.json
 01446cf0278f33d81d33c8c76ac1d7df87df5fe3 assets/reclamation_util/models/item/botanist_broadaxe.json
@@ -40,6 +40,7 @@ eae6771bd57137af50fc1dc3fee79f2b9094abd8 assets/reclamation_util/models/item/oce
 1619c8fcd4725c44b76aa1f7358c8c35a53572a1 assets/reclamation_util/models/item/permafrost_frame.json
 41d44dc715665dfc22995679fd67f9fd59e1ae4e assets/reclamation_util/models/item/plains_biome_globe.json
 ba80d61c47e74f7ba1fb1cd9143c09a9c94827ea assets/reclamation_util/models/item/poison_frame.json
+909288aeb8ff7e5c05e935ebeb25376994c552e4 assets/reclamation_util/models/item/reinforced_watering_can.json
 60c126c31a1123c05f2b62782f5791939f034f3e assets/reclamation_util/models/item/sculk_awakener.json
 f1e18aeae51a36694400cbab4615057681361841 assets/reclamation_util/models/item/sky_broadaxe.json
 65b2ceb1ada18ea4ec15e961a729f260613db39c assets/reclamation_util/models/item/sky_excavator.json
@@ -52,6 +53,7 @@ edb742b02170da79a5ea5f8c92d8fbb2f00f472e assets/reclamation_util/models/item/sto
 4b867d474e092360093ee3b2857a3d08294eb8de assets/reclamation_util/models/item/taiga_biome_globe.json
 3737a3ef4c8a134f6e06e5c46db247d7c073ef08 assets/reclamation_util/models/item/warm_ocean_biome_globe.json
 7d8c6a0b555cbf7217c379ed7138a8b8b5cc135b assets/reclamation_util/models/item/warped_biome_globe.json
+253e31023c2d93f4f3d909bda0e6885f1e9626e7 assets/reclamation_util/models/item/watering_can.json
 204c134a04d05c911bc66a9b50753dc3fea79689 assets/reclamation_util/models/item/watery_biome_bottle.json
 4bbe85aece500fb11fc0b8dbaa27427a9d7bbf1a assets/reclamation_util/models/item/wooden_broadaxe.json
 e4f609ddac620968f20df67554c40ba6446d734a assets/reclamation_util/models/item/wooden_excavator.json

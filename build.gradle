@@ -60,7 +60,7 @@ sourceSets.test.resources { srcDir 'test_resources'}
 
 repositories {
     maven {
-        url "https://cursemaven.com"
+        url = "https://cursemaven.com"
     }
     maven {
         url = "https://api.modrinth.com/maven"
@@ -108,7 +108,6 @@ dependencies {
     implementation fg.deobf("curse.maven:create-328085:6641603")
     implementation fg.deobf("curse.maven:cucumber-272335:6680445")
     implementation fg.deobf("curse.maven:botania-225643:6366547")
-    implementation fg.deobf("at.ridgo8:moreoverlays:1.22.1")
     implementation fg.deobf("curse.maven:mekanism-268560:6552911")
     implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
 }

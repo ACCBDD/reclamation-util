@@ -58,6 +58,8 @@
   "item.reclamation_util.poison_frame": "Poisonous Frame",
   "item.reclamation_util.permafrost_frame": "Permafrost Frame",
   "item.reclamation_util.globesome": "Globesome",
+  "item.reclamation_util.watering_can": "Watering Can",
+  "item.reclamation_util.reinforced_watering_can": "Reinforced Watering Can",
   "death.attack.globus": "%s got globused",
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
