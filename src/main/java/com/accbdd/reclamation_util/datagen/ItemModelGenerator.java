@@ -44,6 +44,16 @@ public class ItemModelGenerator extends ItemModelProvider {
         basicItem(Items.LUSH_BIOME_GLOBE.get());
         basicItem(Items.MYCELIC_BIOME_GLOBE.get());
         basicItem(Items.SNOWY_BIOME_GLOBE.get());
+        basicItem(Items.COLD_OCEAN_BIOME_GLOBE.get());
+        basicItem(Items.STONY_PEAKS_BIOME_GLOBE.get());
+        basicItem(Items.WINDSWEPT_HILLS_BIOME_GLOBE.get());
+        basicItem(Items.BIRCH_FOREST_BIOME_GLOBE.get());
+        basicItem(Items.SWAMP_BIOME_GLOBE.get());
+        basicItem(Items.MANGROVE_SWAMP_BIOME_GLOBE.get());
+        basicItem(Items.SNOWY_PLAINS_BIOME_GLOBE.get());
+        basicItem(Items.SAVANNA_BIOME_GLOBE.get());
+        basicItem(Items.BADLANDS_BIOME_GLOBE.get());
+        basicItem(Items.RIVER_BIOME_GLOBE.get());
         basicItem(Items.GLOBESOME.get());
         basicItem(Items.WATERING_CAN.get());
         basicItem(Items.REINFORCED_WATERING_CAN.get());
