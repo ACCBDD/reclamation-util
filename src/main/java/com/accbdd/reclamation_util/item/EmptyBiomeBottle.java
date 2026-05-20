@@ -2,6 +2,7 @@ package com.accbdd.reclamation_util.item;
 
 import com.accbdd.reclamation_util.datagen.BiomeTagGenerator;
 import com.accbdd.reclamation_util.register.Items;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -12,6 +13,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 
 public class EmptyBiomeBottle extends Item {
     public EmptyBiomeBottle() {
@@ -65,6 +68,16 @@ public class EmptyBiomeBottle extends Item {
             player.playSound(SoundEvents.VEX_AMBIENT);
             player.getCooldowns().addCooldown(Items.EMPTY_BIOME_BOTTLE.get(), 40);
         }
-        player.displayClientMessage(Component.literal("There isn't enough vital energy here to collect biome essence!"), true);
+        Holder<Biome> biome = level.getBiome(player.blockPosition());
+        if (biome.is(Biomes.DESERT)
+                || biome.is(BiomeTagGenerator.LIVING_NETHER)
+                || biome.is(Biomes.SNOWY_SLOPES)
+                || biome.is(Biomes.BAMBOO_JUNGLE)
+                || biome.is(Biomes.MUSHROOM_FIELDS)
+                || biome.is(Biomes.WARM_OCEAN)) {
+            player.displayClientMessage(Component.literal("The vital energy here is too attenuated to collect in a non-attuned bottle."), true);
+        } else {
+            player.displayClientMessage(Component.literal("There isn't enough vital energy here to collect biome essence!"), true);
+        }
     }
 }

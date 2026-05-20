@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosDataProvider;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,6 +20,7 @@ import static com.accbdd.reclamation_util.ReclamationUtil.MODID;
 
 public class ItemTagGenerator extends ItemTagsProvider {
     public static final TagKey<Item> FRAME = ItemTags.create(ResourceLocation.fromNamespaceAndPath("complicated_bees", "frame"));
+    public static final TagKey<Item> BACK_SLOT = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "back"));
 
     public ItemTagGenerator(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
         super(pOutput, pLookupProvider, pBlockTags, MODID, existingFileHelper);
@@ -65,6 +67,10 @@ public class ItemTagGenerator extends ItemTagsProvider {
             Items.MANASTEEL_HAMMER.get(),
             Items.BOTANIST_HAMMER.get(),
             Items.SKY_HAMMER.get()
+        );
+
+        tag(BACK_SLOT).add(
+                Items.CAMEL_PACK_BASIC.get()
         );
     }
 }
