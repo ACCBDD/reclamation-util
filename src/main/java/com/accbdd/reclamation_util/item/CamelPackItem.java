@@ -2,9 +2,9 @@ package com.accbdd.reclamation_util.item;
 
 import dev.ghen.thirst.foundation.common.capability.IThirst;
 import dev.ghen.thirst.foundation.common.capability.ModCapabilities;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -55,7 +55,7 @@ public class CamelPackItem extends Item {
 
             @Override
             public void curioTick(SlotContext slotContext) {
-                if (!(slotContext.entity() instanceof Player player) || player.level().isClientSide)
+                if (!(slotContext.entity() instanceof Player player))
                     return;
 
                 if (player.getCooldowns().isOnCooldown(CamelPackItem.this)) {
@@ -68,20 +68,27 @@ public class CamelPackItem extends Item {
                 if (thirstCap.resolve().isPresent() && (fluidCap.resolve().isPresent() || CamelPackItem.this.infinite)) {
                     IThirst thirst = thirstCap.resolve().get();
                     if (CamelPackItem.this.infinite) {
-                        if (thirst.getThirst() < 18)
-                            thirst.drink(player, (int)(SIP_THIRST * CamelPackItem.this.thirstMod), (int)(SIP_QUENCH * CamelPackItem.this.quenchMod));
+                        if (thirst.getThirst() < 18) {
+                            if (!player.level().isClientSide)
+                                thirst.drink(player, (int) (SIP_THIRST * CamelPackItem.this.thirstMod), (int) (SIP_QUENCH * CamelPackItem.this.quenchMod));
+                            player.playSound(SoundEvents.GENERIC_DRINK, 0.5f, 1);
+                        }
                     } else {
                         if (thirst.getThirst() < 18) {
-                            FluidStack fluid = fluidCap.resolve().get().drain(SIP_SIZE, IFluidHandler.FluidAction.EXECUTE);
+                            FluidStack fluid = fluidCap.resolve().get().drain(SIP_SIZE, IFluidHandler.FluidAction.SIMULATE);
                             if (fluid.getAmount() == 0)
                                 return;
+                            player.playSound(SoundEvents.GENERIC_DRINK, 0.5f, 1);
                             int drinkAmount = Math.min(SIP_SIZE, fluid.getAmount());
                             int drinkRatio = drinkAmount / SIP_SIZE;
-
-                            if (fluid.getFluid().isSame(Fluids.WATER)) {
-                                thirst.drink(player, (int) (SIP_THIRST * drinkRatio * CamelPackItem.this.thirstMod), (int) (SIP_QUENCH * drinkRatio * CamelPackItem.this.quenchMod));
-                                player.getCooldowns().addCooldown(CamelPackItem.this, 20);
+                            if (!player.level().isClientSide) {
+                                if (fluid.getFluid().isSame(Fluids.WATER)) {
+                                    thirst.drink(player, (int) (SIP_THIRST * drinkRatio * CamelPackItem.this.thirstMod), (int) (SIP_QUENCH * drinkRatio * CamelPackItem.this.quenchMod));
+                                    player.getCooldowns().addCooldown(CamelPackItem.this, 20);
+                                    fluidCap.resolve().get().drain(SIP_SIZE, IFluidHandler.FluidAction.EXECUTE);
+                                }
                             }
+
                         }
                     }
                 }

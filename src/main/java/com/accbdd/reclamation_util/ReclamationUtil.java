@@ -1,9 +1,7 @@
 package com.accbdd.reclamation_util;
 
-import com.accbdd.complicated_bees.registry.ItemsRegistration;
 import com.accbdd.reclamation_util.datagen.DataGenerators;
 import com.accbdd.reclamation_util.event.AreaBreakItemUsage;
-import com.accbdd.reclamation_util.item.CamelPackItem;
 import com.accbdd.reclamation_util.naturesaura.ReclaimEffect;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
@@ -19,7 +17,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
