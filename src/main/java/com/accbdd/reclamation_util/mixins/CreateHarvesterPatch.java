@@ -13,7 +13,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(HarvesterMovementBehaviour.class)
-public abstract class CreateHarvesterPatch implements MovementBehaviour {
+public abstract class
+CreateHarvesterPatch implements MovementBehaviour {
     @Inject(method = "visitNewPosition", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;", ordinal = 0), locals = LocalCapture.CAPTURE_FAILHARD)
     public void onVisitNewPosition(MovementContext context, BlockPos pos, CallbackInfo ci, Level world) {
         if (world.getBlockEntity(pos) instanceof CropBlockEntity crop) {

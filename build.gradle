@@ -116,7 +116,8 @@ dependencies {
     implementation fg.deobf("curse.maven:mekanism-268560:6552911")
     implementation fg.deobf("curse.maven:mekanism-tools-268567:6552915")
     implementation fg.deobf("curse.maven:thirst-was-taken-679270:6660408")
-
+    implementation fg.deobf("curse.maven:theurgy-430636:7816723")
+    implementation fg.deobf("curse.maven:modonomicon-538392:7446143")
 }
 
 mixin {

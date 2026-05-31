@@ -1,13 +1,17 @@
 {
   "package": "com.accbdd.reclamation_util.mixins",
+  "minVersion": "0.8",
   "refmap": "mixins.reclamation_util.refmap.json",
   "mixins": [
     "AgriCraftComplexityPatch",
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
+    "CalcinationStoragePatch",
     "CreateHarvesterPatch",
+    "DistillationStoragePatch",
     "EnchantedCauldronPatch",
     "GravestoneMixin",
+    "LiquefactionStoragePatch",
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch"
