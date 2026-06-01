@@ -109,7 +109,7 @@ public class CamelPackItem extends Item {
                 pTooltipComponents.add(fluid.getDisplayName());
             pTooltipComponents.add(Component.literal(fluid.getAmount() + " / " + this.capacity));
             if (fluid.getFluid().isSame(Fluids.WATER)) {
-                int purity = Math.min(WaterPurity.getPurity(fluid) + 1, 3);
+                int purity = WaterPurity.getPurity(fluid);
                 String purityText = WaterPurity.getPurityText(purity);
                 int purityColor = WaterPurity.getPurityColor(purity);
                 pTooltipComponents
