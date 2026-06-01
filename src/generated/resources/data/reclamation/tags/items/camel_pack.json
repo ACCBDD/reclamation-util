@@ -1,0 +1,7 @@
+{
+  "values": [
+    "reclamation_util:camel_pack_basic",
+    "reclamation_util:camel_pack_advanced",
+    "reclamation_util:camel_pack_infinite"
+  ]
+}

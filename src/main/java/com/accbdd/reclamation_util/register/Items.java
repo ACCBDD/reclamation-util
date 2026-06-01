@@ -129,7 +129,8 @@ public class Items {
     public static final RegistryObject<WateringCanItem> REINFORCED_WATERING_CAN = register("reinforced_watering_can", () -> new WateringCanItem(7, 0.35));
 
     public static final RegistryObject<CamelPackItem> CAMEL_PACK_BASIC = register("camel_pack_basic", () -> new CamelPackItem(new Item.Properties(), 4000, 1, 1, false));
-
+    public static final RegistryObject<CamelPackItem> CAMEL_PACK_ADVANCED = register("camel_pack_advanced", () -> new CamelPackItem(new Item.Properties(), 8000, 1.5f, 1.5f, false));
+    public static final RegistryObject<CamelPackItem> CAMEL_PACK_INFINITE = register("camel_pack_infinite", () -> new CamelPackItem(new Item.Properties(), 0, 1, 1, true));
 
     public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_MODE_TAB.register(MODID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.reclamation_util")).icon(() -> Items.FILLED_BIOME_BOTTLE.get().getDefaultInstance()).displayItems((parameters, output) -> {
         for (RegistryObject<?> item : Items.CREATIVE_TAB_ITEMS) {

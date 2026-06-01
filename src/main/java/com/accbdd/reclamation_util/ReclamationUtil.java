@@ -1,7 +1,9 @@
 package com.accbdd.reclamation_util;
 
 import com.accbdd.reclamation_util.datagen.DataGenerators;
+import com.accbdd.reclamation_util.datagen.ItemTagGenerator;
 import com.accbdd.reclamation_util.event.AreaBreakItemUsage;
+import com.accbdd.reclamation_util.item.CamelPackItem;
 import com.accbdd.reclamation_util.naturesaura.ReclaimEffect;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
@@ -12,16 +14,20 @@ import com.accbdd.reclamation_util.register.Items;
 import com.accbdd.reclamation_util.register.Particles;
 import com.mojang.logging.LogUtils;
 import de.ellpeck.naturesaura.api.NaturesAuraAPI;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.renderer.item.ItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -54,8 +60,8 @@ public class ReclamationUtil {
 
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
-        if (event.getObject().is(Items.CAMEL_PACK_BASIC.get())) {
-            event.addCapability(ResourceLocation.tryParse("reclamation_util:camel_fluid"), new FluidHandlerItemStack(event.getObject(), Items.CAMEL_PACK_BASIC.get().capacity));
+        if (event.getObject().getItem() instanceof CamelPackItem camelPack) {
+            event.addCapability(ResourceLocation.tryParse("reclamation_util:camel_fluid"), new FluidHandlerItemStack(event.getObject(), camelPack.capacity));
         }
     }
 
@@ -74,5 +80,28 @@ public class ReclamationUtil {
             event.registerSpriteSet(Particles.COLORED_LEAF_TYPE.get(), set -> (options, pLevel, pX, pY, pZ, pXSpeed, pYSpeed, pZSpeed) ->
                     new ColoredLeafParticle(pLevel, pX, pY, pZ, set, options));
         }
+
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                ItemPropertyFunction fluidProperty = (stack, level, entity, seed) ->
+                        stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM)
+                                .map(h -> (float) h.getFluidInTank(0).getAmount()
+                                        / ((CamelPackItem) stack.getItem()).capacity)
+                                .orElse(0f);
+                ItemProperties.register(
+                        Items.CAMEL_PACK_BASIC.get(),
+                        ResourceLocation.fromNamespaceAndPath(MODID, "fill_level"),
+                        fluidProperty
+                );
+
+                ItemProperties.register(
+                        Items.CAMEL_PACK_ADVANCED.get(),
+                        ResourceLocation.fromNamespaceAndPath(MODID, "fill_level"),
+                        fluidProperty
+                );
+            });
+        }
+
     }
 }

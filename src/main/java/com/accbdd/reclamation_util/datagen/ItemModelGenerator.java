@@ -2,8 +2,10 @@ package com.accbdd.reclamation_util.datagen;
 
 import com.accbdd.reclamation_util.register.Items;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -75,10 +77,35 @@ public class ItemModelGenerator extends ItemModelProvider {
         toolItem(Items.MANASTEEL_PAXEL.get());
         toolItem(Items.BOTANIST_PAXEL.get());
         toolItem(Items.SKY_PAXEL.get());
+        camelPackItem(Items.CAMEL_PACK_BASIC.get());
+        camelPackItem(Items.CAMEL_PACK_ADVANCED.get());
     }
 
     private void toolItem(Item item) {
         withExistingParent(ForgeRegistries.ITEMS.getKey(item).getPath(), "minecraft:item/handheld")
-                .texture("layer0", ForgeRegistries.ITEMS.getKey(item).getNamespace() + ":item/" + ForgeRegistries.ITEMS.getKey(item).getPath());
+                .texture("layer0", MODID + ":item/" + ForgeRegistries.ITEMS.getKey(item).getPath());
     }
+
+    private ModelFile layeredModel(String modelName, String baseTex, String overlayTex) {
+        return withExistingParent(modelName, "minecraft:item/generated")
+                .texture("layer0", MODID + ":item/" + baseTex)
+                .texture("layer1", MODID + ":item/" + overlayTex);
+    }
+
+    private void camelPackItem(Item item) {
+        String name = ForgeRegistries.ITEMS.getKey(item).getPath();
+        ResourceLocation fillPredicate = ResourceLocation.fromNamespaceAndPath(MODID, "fill_level");
+        ModelFile low  = layeredModel(name + "_low", name, "camel_pack_overlay_1");
+        ModelFile half = layeredModel(name + "_half", name, "camel_pack_overlay_2");
+        ModelFile high = layeredModel(name + "_high", name, "camel_pack_overlay_3");
+        ModelFile full = layeredModel(name + "_empty", name, "camel_pack_overlay_4");
+
+        withExistingParent(name, "minecraft:item/generated")
+                .texture("layer0", MODID + ":item/" + name)
+                .override().predicate(fillPredicate, 0.25f).model(low).end()
+                .override().predicate(fillPredicate, 0.50f).model(half).end()
+                .override().predicate(fillPredicate, 0.75f).model(high).end()
+                .override().predicate(fillPredicate, 1.00f).model(full).end();
+    }
+
 }

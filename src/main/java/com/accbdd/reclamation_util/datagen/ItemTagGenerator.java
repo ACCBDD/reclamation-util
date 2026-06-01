@@ -21,6 +21,7 @@ import static com.accbdd.reclamation_util.ReclamationUtil.MODID;
 public class ItemTagGenerator extends ItemTagsProvider {
     public static final TagKey<Item> FRAME = ItemTags.create(ResourceLocation.fromNamespaceAndPath("complicated_bees", "frame"));
     public static final TagKey<Item> BACK_SLOT = ItemTags.create(ResourceLocation.fromNamespaceAndPath("curios", "back"));
+    public static final TagKey<Item> CAMEL_PACK = ItemTags.create(ResourceLocation.fromNamespaceAndPath("reclamation", "camel_pack"));
 
     public ItemTagGenerator(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
         super(pOutput, pLookupProvider, pBlockTags, MODID, existingFileHelper);
@@ -68,9 +69,11 @@ public class ItemTagGenerator extends ItemTagsProvider {
             Items.BOTANIST_HAMMER.get(),
             Items.SKY_HAMMER.get()
         );
-
-        tag(BACK_SLOT).add(
-                Items.CAMEL_PACK_BASIC.get()
+        tag(CAMEL_PACK).add(
+                Items.CAMEL_PACK_BASIC.get(),
+                Items.CAMEL_PACK_ADVANCED.get(),
+                Items.CAMEL_PACK_INFINITE.get()
         );
+        tag(BACK_SLOT).addTag(CAMEL_PACK);
     }
 }

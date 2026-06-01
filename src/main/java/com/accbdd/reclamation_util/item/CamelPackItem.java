@@ -1,9 +1,13 @@
 package com.accbdd.reclamation_util.item;
 
+import dev.ghen.thirst.content.purity.WaterPurity;
 import dev.ghen.thirst.foundation.common.capability.IThirst;
 import dev.ghen.thirst.foundation.common.capability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.contents.LiteralContents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -79,10 +83,11 @@ public class CamelPackItem extends Item {
                             if (fluid.getAmount() == 0)
                                 return;
                             player.playSound(SoundEvents.GENERIC_DRINK, 0.5f, 1);
-                            int drinkAmount = Math.min(SIP_SIZE, fluid.getAmount());
-                            int drinkRatio = drinkAmount / SIP_SIZE;
+                            float drinkAmount = Math.min(SIP_SIZE, fluid.getAmount());
+                            float drinkRatio = drinkAmount / SIP_SIZE;
                             if (!player.level().isClientSide) {
                                 if (fluid.getFluid().isSame(Fluids.WATER)) {
+                                    WaterPurity.givePurityEffects(player, Math.min(3, WaterPurity.getPurity(fluid) + 1));
                                     thirst.drink(player, (int) (SIP_THIRST * drinkRatio * CamelPackItem.this.thirstMod), (int) (SIP_QUENCH * drinkRatio * CamelPackItem.this.quenchMod));
                                     player.getCooldowns().addCooldown(CamelPackItem.this, 20);
                                     fluidCap.resolve().get().drain(SIP_SIZE, IFluidHandler.FluidAction.EXECUTE);
@@ -98,8 +103,22 @@ public class CamelPackItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(fluidCap -> {
+            FluidStack fluid = fluidCap.getFluidInTank(0);
+            if (!fluid.isEmpty())
+                pTooltipComponents.add(fluid.getDisplayName());
+            pTooltipComponents.add(Component.literal(fluid.getAmount() + " / " + this.capacity));
+            if (fluid.getFluid().isSame(Fluids.WATER)) {
+                int purity = Math.min(WaterPurity.getPurity(fluid) + 1, 3);
+                String purityText = WaterPurity.getPurityText(purity);
+                int purityColor = WaterPurity.getPurityColor(purity);
+                pTooltipComponents
+                        .add(MutableComponent
+                                .create(new LiteralContents(purityText))
+                                .setStyle(Style.EMPTY.withColor(purityColor)));
+            }
+        });
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-        pStack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(fluidCap -> pTooltipComponents.add(Component.literal(fluidCap.getFluidInTank(0).getAmount() + " / " + this.capacity)));
     }
 
     @Override
@@ -116,6 +135,6 @@ public class CamelPackItem extends Item {
 
     @Override
     public int getBarColor(ItemStack pStack) {
-        return 5592575;
+        return 0x3F76E4;
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "reclamation_util:item/camel_pack_basic",
+    "layer1": "reclamation_util:item/camel_pack_overlay_2"
+  }
+}
