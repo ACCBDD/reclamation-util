@@ -57,3 +57,10 @@ description='''${mod_description}'''
     versionRange="*"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="theurgy"
+    mandatory=true
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
