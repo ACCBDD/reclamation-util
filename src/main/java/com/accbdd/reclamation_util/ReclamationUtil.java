@@ -60,7 +60,7 @@ public class ReclamationUtil {
 
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
-        if (event.getObject().getItem() instanceof CamelPackItem camelPack) {
+        if (event.getObject().getItem() instanceof CamelPackItem camelPack && !camelPack.infinite) {
             event.addCapability(ResourceLocation.tryParse("reclamation_util:camel_fluid"), new FluidHandlerItemStack(event.getObject(), camelPack.capacity));
         }
     }

@@ -42,7 +42,7 @@ public class CamelPackItem extends Item {
     public final boolean infinite;
 
     public CamelPackItem(Properties pProperties, int capacity, float thirstMod, float quenchMod, boolean infinite) {
-        super(pProperties);
+        super(pProperties.stacksTo(1));
         this.capacity = capacity;
         this.thirstMod = thirstMod;
         this.quenchMod = quenchMod;
@@ -74,9 +74,12 @@ public class CamelPackItem extends Item {
                     IThirst thirst = thirstCap.resolve().get();
                     if (CamelPackItem.this.infinite) {
                         if (thirst.getThirst() < 18) {
-                            if (!player.level().isClientSide)
+                            if (!player.level().isClientSide) {
                                 thirst.drink(player, (int) (SIP_THIRST * CamelPackItem.this.thirstMod), (int) (SIP_QUENCH * CamelPackItem.this.quenchMod));
+                                player.getCooldowns().addCooldown(CamelPackItem.this, 20);
+                            }
                             player.playSound(SoundEvents.GENERIC_DRINK, 0.5f, 1);
+
                         }
                     } else {
                         if (thirst.getThirst() < 18) {
