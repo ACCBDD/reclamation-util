@@ -32,10 +32,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BiomeGlobeItem extends Item {
-    private static int RADIUS = 12;
-    private static TagKey<Block> CONVERT_UNDER = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:convert_under"));
-    private static TagKey<Block> CONVERTIBLE = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:convertible"));
-    private static TagKey<Block> OCEAN_CONVERTIBLE = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:ocean_convertible"));
+    private static final int RADIUS = 12;
+    private static final TagKey<Block> CONVERT_UNDER = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:convert_under"));
+    private static final TagKey<Block> CONVERTIBLE = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:convertible"));
+    private static final TagKey<Block> OCEAN_CONVERTIBLE = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.parse("reclamation:ocean_convertible"));
 
     private final ResourceKey<Biome> biome;
     private final BlockState dirt;
@@ -60,7 +60,7 @@ public class BiomeGlobeItem extends Item {
                 if (pLevel.getBlockState(pos).is(isOcean ? OCEAN_CONVERTIBLE : CONVERTIBLE)) {
                     if (pLevel.getBlockState(pos.above()).is(CONVERT_UNDER)) {
                         pLevel.setBlockAndUpdate(pos, surface);
-                    } else  {
+                    } else {
                         pLevel.setBlockAndUpdate(pos, dirt);
                     }
                 }

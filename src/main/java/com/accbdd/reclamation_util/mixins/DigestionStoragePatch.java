@@ -31,9 +31,12 @@ public abstract class DigestionStoragePatch extends StorageBehaviour<DigestionSt
     public LazyOptional<IItemHandler> inventoryCapability;
     @Shadow
     public ItemStackHandler inputInventory;
-    @Shadow public LazyOptional<IItemHandler> outputInventoryExtractOnlyCapability;
-    @Shadow public ItemStackHandler outputInventory;
-    @Shadow public LazyOptional<IItemHandler> inventoryReadOnlyCapability;
+    @Shadow
+    public LazyOptional<IItemHandler> outputInventoryExtractOnlyCapability;
+    @Shadow
+    public ItemStackHandler outputInventory;
+    @Shadow
+    public LazyOptional<IItemHandler> inventoryReadOnlyCapability;
     @Unique
     IItemHandler reclamation_util$automationHandler;
     @Unique

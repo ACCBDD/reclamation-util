@@ -33,40 +33,40 @@ public class ItemTagGenerator extends ItemTagsProvider {
         tag(ToolsTags.Items.TOOLS_PAXELS).add(Items.BOTANIST_PAXEL.get(), Items.MANASTEEL_PAXEL.get(), Items.SKY_PAXEL.get());
 
         tag(ItemTags.AXES).add(
-            Items.BOTANIST_BROADAXE.get(),
-            Items.WOODEN_BROADAXE.get(),
-            Items.STONE_BROADAXE.get(),
-            Items.GOLDEN_BROADAXE.get(),
-            Items.IRON_BROADAXE.get(),
-            Items.DIAMOND_BROADAXE.get(),
-            Items.NETHERITE_BROADAXE.get(),
-            Items.MANASTEEL_BROADAXE.get(),
-            Items.BOTANIST_BROADAXE.get(),
-            Items.SKY_BROADAXE.get()
+                Items.BOTANIST_BROADAXE.get(),
+                Items.WOODEN_BROADAXE.get(),
+                Items.STONE_BROADAXE.get(),
+                Items.GOLDEN_BROADAXE.get(),
+                Items.IRON_BROADAXE.get(),
+                Items.DIAMOND_BROADAXE.get(),
+                Items.NETHERITE_BROADAXE.get(),
+                Items.MANASTEEL_BROADAXE.get(),
+                Items.BOTANIST_BROADAXE.get(),
+                Items.SKY_BROADAXE.get()
         );
 
         tag(ItemTags.SHOVELS).add(
-            Items.WOODEN_EXCAVATOR.get(),
-            Items.STONE_EXCAVATOR.get(),
-            Items.GOLDEN_EXCAVATOR.get(),
-            Items.IRON_EXCAVATOR.get(),
-            Items.DIAMOND_EXCAVATOR.get(),
-            Items.NETHERITE_EXCAVATOR.get(),
-            Items.MANASTEEL_EXCAVATOR.get(),
-            Items.BOTANIST_EXCAVATOR.get(),
-            Items.SKY_EXCAVATOR.get()
+                Items.WOODEN_EXCAVATOR.get(),
+                Items.STONE_EXCAVATOR.get(),
+                Items.GOLDEN_EXCAVATOR.get(),
+                Items.IRON_EXCAVATOR.get(),
+                Items.DIAMOND_EXCAVATOR.get(),
+                Items.NETHERITE_EXCAVATOR.get(),
+                Items.MANASTEEL_EXCAVATOR.get(),
+                Items.BOTANIST_EXCAVATOR.get(),
+                Items.SKY_EXCAVATOR.get()
         );
 
         tag(ItemTags.PICKAXES).add(
-            Items.WOODEN_HAMMER.get(),
-            Items.STONE_HAMMER.get(),
-            Items.GOLDEN_HAMMER.get(),
-            Items.IRON_HAMMER.get(),
-            Items.DIAMOND_HAMMER.get(),
-            Items.NETHERITE_HAMMER.get(),
-            Items.MANASTEEL_HAMMER.get(),
-            Items.BOTANIST_HAMMER.get(),
-            Items.SKY_HAMMER.get()
+                Items.WOODEN_HAMMER.get(),
+                Items.STONE_HAMMER.get(),
+                Items.GOLDEN_HAMMER.get(),
+                Items.IRON_HAMMER.get(),
+                Items.DIAMOND_HAMMER.get(),
+                Items.NETHERITE_HAMMER.get(),
+                Items.MANASTEEL_HAMMER.get(),
+                Items.BOTANIST_HAMMER.get(),
+                Items.SKY_HAMMER.get()
         );
         tag(CAMEL_PACK).add(
                 Items.CAMEL_PACK_BASIC.get(),

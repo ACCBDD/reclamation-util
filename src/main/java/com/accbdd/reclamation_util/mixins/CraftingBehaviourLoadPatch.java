@@ -14,19 +14,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CraftingBehaviour.class)
 public abstract class CraftingBehaviourLoadPatch<W extends RecipeWrapper, R extends Recipe<W>, C extends RecipeManager.CachedCheck<W, R>> {
-    @Shadow protected abstract int getTotalTime();
+    @Shadow
+    protected abstract int getTotalTime();
 
-    @Shadow protected int progress;
+    @Shadow
+    protected int progress;
 
-    @Shadow protected int totalTime;
+    @Shadow
+    protected int totalTime;
 
-    @Shadow protected abstract boolean craft(R pRecipe);
+    @Shadow
+    protected abstract boolean craft(R pRecipe);
 
-    @Shadow protected abstract void sendBlockUpdated();
+    @Shadow
+    protected abstract void sendBlockUpdated();
 
-    @Shadow protected boolean isProcessing;
+    @Shadow
+    protected boolean isProcessing;
 
-    @Shadow protected abstract void tryStartProcessing();
+    @Shadow
+    protected abstract void tryStartProcessing();
 
     /**
      * @author ACCBDD

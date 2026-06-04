@@ -114,7 +114,7 @@ public class Items {
     public static final RegistryObject<Item> SKY_HAMMER = register("sky_hammer", () -> new BotanistHammerItem(ModItemTier.SKY, 1f, -2.8f, new Item.Properties()));
     public static final RegistryObject<Item> SKY_BROADAXE = register("sky_broadaxe", () -> new BotanistBroadaxeItem(ModItemTier.SKY, 6f, -3.2f, new Item.Properties()));
     public static final RegistryObject<Item> MANASTEEL_PAXEL = register("manasteel_paxel", () -> new ManasteelPaxelItem(BotaniaAPI.instance().getManasteelItemTier(), 6.5f, -2.4f, new Item.Properties()));
-    public static final RegistryObject<Item> BOTANIST_PAXEL = register("botanist_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.INFUSED, new Item.Properties()) );
+    public static final RegistryObject<Item> BOTANIST_PAXEL = register("botanist_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.INFUSED, new Item.Properties()));
     public static final RegistryObject<Item> SKY_PAXEL = register("sky_paxel", () -> new BotanistPaxelItem(6.5f, -2.4f, ModItemTier.SKY, new Item.Properties()));
 
     public static final RegistryObject<FrameItem> POISON_FRAME = register("poison_frame", () -> new FrameItem(new Item.Properties().durability(60), new BeeHousingModifier.Builder().productivity(0.9f).lifespan(0.75f).build(), CommonConfig.COMMON_CONFIG.frame));

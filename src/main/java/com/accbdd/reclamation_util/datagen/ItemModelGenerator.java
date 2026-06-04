@@ -96,7 +96,7 @@ public class ItemModelGenerator extends ItemModelProvider {
     private void camelPackItem(Item item) {
         String name = ForgeRegistries.ITEMS.getKey(item).getPath();
         ResourceLocation fillPredicate = ResourceLocation.fromNamespaceAndPath(MODID, "fill_level");
-        ModelFile low  = layeredModel(name + "_low", name, "camel_pack_overlay_1");
+        ModelFile low = layeredModel(name + "_low", name, "camel_pack_overlay_1");
         ModelFile half = layeredModel(name + "_half", name, "camel_pack_overlay_2");
         ModelFile high = layeredModel(name + "_high", name, "camel_pack_overlay_3");
         ModelFile full = layeredModel(name + "_empty", name, "camel_pack_overlay_4");

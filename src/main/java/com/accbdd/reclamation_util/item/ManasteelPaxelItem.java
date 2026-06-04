@@ -112,13 +112,13 @@ public class ManasteelPaxelItem extends AxeItem implements CustomDamageItem, Sor
                 if (foundResult != null && world.isEmptyBlock(blockpos.above())) {
                     world.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
                     resultToSet = foundResult;
-                } else if (blockstate.getBlock() instanceof CampfireBlock && (Boolean)blockstate.getValue(CampfireBlock.LIT)) {
+                } else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.getValue(CampfireBlock.LIT)) {
                     if (!world.isClientSide) {
-                        world.levelEvent((Player)null, 1009, blockpos, 0);
+                        world.levelEvent(null, 1009, blockpos, 0);
                     }
 
                     CampfireBlock.dowse(player, world, blockpos, blockstate);
-                    resultToSet = (BlockState)blockstate.setValue(CampfireBlock.LIT, false);
+                    resultToSet = blockstate.setValue(CampfireBlock.LIT, false);
                 }
 
                 if (resultToSet == null) {
@@ -126,8 +126,7 @@ public class ManasteelPaxelItem extends AxeItem implements CustomDamageItem, Sor
                 } else {
                     if (!world.isClientSide) {
                         ItemStack stack = context.getItemInHand();
-                        if (player instanceof ServerPlayer) {
-                            ServerPlayer serverPlayer = (ServerPlayer)player;
+                        if (player instanceof ServerPlayer serverPlayer) {
                             CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockpos, stack);
                         }
 
