@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
@@ -136,5 +137,18 @@ public class CamelPackItem extends Item {
     @Override
     public int getBarColor(ItemStack pStack) {
         return 0x3F76E4;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack pStack) {
+        return infinite;
+    }
+
+    @Override
+    public Rarity getRarity(ItemStack pStack) {
+        if (infinite) {
+            return Rarity.RARE;
+        }
+        return Rarity.COMMON;
     }
 }

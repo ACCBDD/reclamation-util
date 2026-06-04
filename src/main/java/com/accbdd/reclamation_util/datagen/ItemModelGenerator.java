@@ -79,6 +79,7 @@ public class ItemModelGenerator extends ItemModelProvider {
         toolItem(Items.SKY_PAXEL.get());
         camelPackItem(Items.CAMEL_PACK_BASIC.get());
         camelPackItem(Items.CAMEL_PACK_ADVANCED.get());
+        basicItem(Items.CAMEL_PACK_INFINITE.get());
     }
 
     private void toolItem(Item item) {
