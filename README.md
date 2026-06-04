@@ -22,9 +22,7 @@ Utilities and mixins for the Reclamation modpack.
 * Agricraft patches 
   * Fertility patch (thanks @Piotr015!)
   * Complexity patch (thanks @Piotr015!)
-  * Mystical Agriculture harvester compatibility patch
   * Enchanted Mandrake plant spawn modifier
-  * Create harvester compatibility patch
   * Makes fluid condition nonlethal
 * Enchanted patches
   * Fixes cauldron needing four buckets of water after a completed recipe bug
@@ -36,5 +34,13 @@ Utilities and mixins for the Reclamation modpack.
 * Frame Remover
   * A way to break end portal frames and end portal blocks
 * Gravestone mod gravestones generate on clay, not dirt
-* More Overlays Updated patches
-  * stops console spam when EMI on top of JEI is used
+* Watering cans
+* Camel pack
+  * Restore thirst automatically, respecting water purity - 3 tiers
+* Theurgy patches
+  * All machines now only allow extraction of outputs
+  * Digestion and fermentation vats output comparator signal when there's a valid recipe in them - signal strength scales with how full the output inventory is
+* Thirst was Taken patches
+  * Compatibility with the Create pump to respect purity when pulling water from a cauldron
+  * Cauldrons filled with rainwater have purity of Dirty
+  * Cauldrons filled with dripstone have purity of Acceptable
