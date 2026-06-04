@@ -66,5 +66,6 @@
   "death.attack.globus": "%s got globused",
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
-  "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates Aura nearby."
+  "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates Aura nearby.",
+  "config.jade.plugin_reclamation_util.cauldron_purity": "Cauldron Water Purity"
 }
