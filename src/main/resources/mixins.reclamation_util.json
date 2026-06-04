@@ -9,6 +9,7 @@
     "CalcinationStoragePatch",
     "CauldronPurityPatch",
     "CraftingBehaviourLoadPatch",
+    "CreateFluidExtractPatch",
     "CreateHarvesterPatch",
     "DigestionStoragePatch",
     "DigestionVatRedstonePatch",
