@@ -1,6 +1,7 @@
 package com.accbdd.reclamation_util.item;
 
 import dev.ghen.thirst.content.purity.WaterPurity;
+import dev.ghen.thirst.content.registry.ItemInit;
 import dev.ghen.thirst.foundation.common.capability.IThirst;
 import dev.ghen.thirst.foundation.common.capability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
@@ -9,11 +10,11 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.contents.LiteralContents;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -28,13 +29,13 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CamelPackItem extends Item {
     private static final int SIP_SIZE = 100;
     private static final float SIP_THIRST = 5f * ((float) SIP_SIZE / 250);
     private static final float SIP_QUENCH = 8f * ((float) SIP_SIZE / 250);
-
 
     public final int capacity;
     public final float thirstMod;
@@ -153,5 +154,56 @@ public class CamelPackItem extends Item {
             return Rarity.RARE;
         }
         return Rarity.COMMON;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+        if (pUsedHand != InteractionHand.MAIN_HAND)
+            return InteractionResultHolder.pass(pPlayer.getItemInHand(pUsedHand));
+
+        ItemStack offhand = pPlayer.getItemInHand(InteractionHand.OFF_HAND);
+        ItemStack mainhand = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
+
+        if (!WaterPurity.isWaterFilledContainer(offhand))
+            return InteractionResultHolder.pass(mainhand);
+
+        LazyOptional<IFluidHandlerItem> packFluid = mainhand.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
+        if (!packFluid.isPresent() || packFluid.resolve().isEmpty())
+            return InteractionResultHolder.pass(mainhand);
+
+        IFluidHandlerItem handler = packFluid.resolve().get();
+        FluidStack packContents = handler.getFluidInTank(0);
+
+        int offhandPurity = WaterPurity.getPurity(offhand);
+
+        if (!packContents.isEmpty()) {
+            int packPurity = WaterPurity.getPurity(packContents);
+            if (packPurity != offhandPurity)
+                return InteractionResultHolder.fail(mainhand);
+        }
+
+        int amount = offhand.is(Items.WATER_BUCKET) ? 1000 : 250;
+        FluidStack toFill = WaterPurity.addPurity(new FluidStack(Fluids.WATER, amount), offhandPurity);
+
+        int filled = handler.fill(toFill, IFluidHandler.FluidAction.SIMULATE);
+        if (filled == 0)
+            return InteractionResultHolder.fail(mainhand);
+
+        if (!pLevel.isClientSide) {
+            handler.fill(toFill, IFluidHandler.FluidAction.EXECUTE);
+
+            ItemStack empty = ItemStack.EMPTY;
+            if (offhand.is(Items.WATER_BUCKET)) {
+                empty = Items.BUCKET.getDefaultInstance();
+            } else if (offhand.is(Items.POTION)) {
+                empty = Items.GLASS_BOTTLE.getDefaultInstance();
+            } else if (offhand.is(ItemInit.TERRACOTTA_WATER_BOWL.get())) {
+                empty = ItemInit.TERRACOTTA_BOWL.get().getDefaultInstance();
+            }
+            offhand.shrink(1);
+            pPlayer.addItem(empty);
+        }
+        pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1f, 1f);
+        return InteractionResultHolder.success(mainhand);
     }
 }
