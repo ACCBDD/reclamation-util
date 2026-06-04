@@ -2,7 +2,6 @@ package com.accbdd.reclamation_util.datagen;
 
 import com.accbdd.reclamation_util.register.Items;
 import de.ellpeck.naturesaura.items.ModItems;
-import mekanism.tools.common.recipe.PaxelRecipe;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;

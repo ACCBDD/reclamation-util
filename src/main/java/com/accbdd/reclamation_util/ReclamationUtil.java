@@ -1,7 +1,6 @@
 package com.accbdd.reclamation_util;
 
 import com.accbdd.reclamation_util.datagen.DataGenerators;
-import com.accbdd.reclamation_util.datagen.ItemTagGenerator;
 import com.accbdd.reclamation_util.event.AreaBreakItemUsage;
 import com.accbdd.reclamation_util.item.CamelPackItem;
 import com.accbdd.reclamation_util.naturesaura.ReclaimEffect;
