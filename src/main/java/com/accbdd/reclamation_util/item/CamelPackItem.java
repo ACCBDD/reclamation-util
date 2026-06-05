@@ -13,7 +13,10 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
@@ -97,7 +100,6 @@ public class CamelPackItem extends Item {
                                     fluidCap.resolve().get().drain(SIP_SIZE, IFluidHandler.FluidAction.EXECUTE);
                                 }
                             }
-
                         }
                     }
                 }
@@ -204,5 +206,53 @@ public class CamelPackItem extends Item {
         }
         pLevel.playSound(pPlayer, pPlayer.blockPosition(), SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1f, 1f);
         return InteractionResultHolder.success(mainhand);
+    }
+
+    @Override
+    public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
+        if (action != ClickAction.SECONDARY)
+            return false;
+
+        if (!WaterPurity.isWaterFilledContainer(other))
+            return false;
+
+        LazyOptional<IFluidHandlerItem> packFluid = stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
+        if (packFluid.resolve().isEmpty())
+            return false;
+
+        IFluidHandlerItem handler = packFluid.resolve().get();
+        FluidStack packContents = handler.getFluidInTank(0);
+
+        int offhandPurity = WaterPurity.getPurity(other);
+
+        if (!packContents.isEmpty() && WaterPurity.getPurity(packContents) != offhandPurity)
+            return false;
+
+        int amount = other.is(Items.WATER_BUCKET) ? 1000 : 250;
+        FluidStack toFill = WaterPurity.addPurity(new FluidStack(Fluids.WATER, amount), offhandPurity);
+
+        if (handler.fill(toFill, IFluidHandler.FluidAction.SIMULATE) == 0)
+            return false;
+
+        handler.fill(toFill, IFluidHandler.FluidAction.EXECUTE);
+        ItemStack empty = ItemStack.EMPTY;
+        if (other.is(Items.WATER_BUCKET)) {
+            empty = Items.BUCKET.getDefaultInstance();
+        } else if (other.is(Items.POTION)) {
+            empty = Items.GLASS_BOTTLE.getDefaultInstance();
+        } else if (other.is(ItemInit.TERRACOTTA_WATER_BOWL.get())) {
+            empty = ItemInit.TERRACOTTA_BOWL.get().getDefaultInstance();
+        }
+        other.shrink(1);
+        if (other.isEmpty() || other.getCount() == 0) {
+            access.set(empty);
+        } else {
+            player.addItem(empty);
+        }
+
+        slot.set(stack);
+
+        player.level().playSound(player, player.blockPosition(), SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1f, 1f);
+        return true;
     }
 }
