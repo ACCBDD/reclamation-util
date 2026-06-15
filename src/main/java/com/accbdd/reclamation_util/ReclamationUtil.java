@@ -16,6 +16,7 @@ import de.ellpeck.naturesaura.api.NaturesAuraAPI;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.item.ItemPropertyFunction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -28,6 +29,7 @@ import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -43,6 +45,7 @@ public class ReclamationUtil {
 
         modEventBus.addListener(ReclamationUtil::onCommonSetup);
         modEventBus.addListener(DataGenerators::generate);
+        modEventBus.addListener(ReclamationUtil::afterLoadComplete);
 
         Particles.REGISTER.register(modEventBus);
         Items.REGISTER.register(modEventBus);
@@ -55,6 +58,10 @@ public class ReclamationUtil {
         ReclamationPlantModifiers.register();
         NaturesAuraAPI.DRAIN_SPOT_EFFECTS.put(ReclaimEffect.NAME, ReclaimEffect::new);
         NaturesAuraAPI.EFFECT_POWDERS.put(ReclaimEffect.NAME, 0xFFCC00);
+    }
+
+    public static void afterLoadComplete(FMLLoadCompleteEvent event) {
+        NaturesAuraAPI.PROJECTILE_GENERATIONS.put(EntityType.SNOWBALL, 0);
     }
 
     @SubscribeEvent
