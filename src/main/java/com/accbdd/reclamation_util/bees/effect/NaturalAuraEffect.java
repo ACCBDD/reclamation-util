@@ -2,6 +2,7 @@ package com.accbdd.reclamation_util.bees.effect;
 
 import com.accbdd.complicated_bees.bees.effect.BeeEffect;
 import de.ellpeck.naturesaura.api.aura.chunk.IAuraChunk;
+import de.ellpeck.naturesaura.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -17,7 +18,7 @@ public class NaturalAuraEffect extends BeeEffect {
         if (apiary.getLevel() == null) return;
 
         if (cycleProgress == 0) {
-            int amount = 2000;
+            int amount = 100000;
             BlockPos blockPos = apiary.getBlockPos();
             Level level = apiary.getLevel();
             int aura = IAuraChunk.getAuraInArea(level, blockPos, 35);
@@ -25,7 +26,7 @@ public class NaturalAuraEffect extends BeeEffect {
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, blockPos.getX(), blockPos.getY(), blockPos.getZ(), 10, 1, 1, 1, 0);
             }
-            while (amount > 0 & aura + amount <= 2000000) {
+            while (amount > 0 && ((aura + amount <= 2000000) || (apiary.getLevel().getBlockState(apiary.getBlockPos().below()).getBlock() == ModBlocks.GENERATOR_LIMIT_REMOVER))) {
                 BlockPos spot = IAuraChunk.getLowestSpot(level, blockPos, 35, blockPos);
                 amount -= IAuraChunk.getAuraChunk(level, spot).storeAura(spot, amount);
             }

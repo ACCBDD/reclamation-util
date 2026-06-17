@@ -29,6 +29,7 @@ Utilities and mixins for the Reclamation modpack.
 * Nature's Aura
   * Fixes mobs without spawn eggs recipes breaking in a Birthing Altar recipe
   * Adds reclaim effect (turns blocks with a special tag into dirt)
+  * Removes snowballs from projectile list
 * Sculk Awakener
   * Turns sculk shriekers into spawning versions
 * Frame Remover
