@@ -1,0 +1,13 @@
+{
+  "type": "theurgy:accumulation",
+  "accumulationTime": 100,
+  "evaporant": {
+    "fluid": "minecraft:water",
+    "nbt": {}
+  },
+  "evaporantAmount": 1000,
+  "result": {
+    "Amount": 500,
+    "FluidName": "theurgy:sal_ammoniac"
+  }
+}

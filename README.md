@@ -25,7 +25,7 @@ Utilities and mixins for the Reclamation modpack.
   * Enchanted Mandrake plant spawn modifier
   * Makes fluid condition nonlethal
 * Enchanted patches
-  * Fixes cauldron needing four buckets of water after a completed recipe bug
+  * Cauldron and kettle only need one bucket of water and accept fluid automation
 * Nature's Aura
   * Fixes mobs without spawn eggs recipes breaking in a Birthing Altar recipe
   * Adds reclaim effect (turns blocks with a special tag into dirt)
