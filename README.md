@@ -47,3 +47,4 @@ Utilities and mixins for the Reclamation modpack.
   * Cauldrons filled with rainwater have purity of Dirty
   * Cauldrons filled with dripstone have purity of Acceptable
   * Cauldrons filled with water display purity on their jade tooltip
+* Removes bonemealing water to generate plants
