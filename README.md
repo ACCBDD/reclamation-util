@@ -48,4 +48,5 @@ Utilities and mixins for the Reclamation modpack.
   * Cauldrons filled with dripstone have purity of Acceptable
   * Cauldrons filled with water display purity on their jade tooltip
   * Botania's rod of the seas produces slightly dirty water instead of default
+  * Ars Elemental's Everfull Urn produces acceptable water instead of untagged
 * Removes bonemealing water to generate plants

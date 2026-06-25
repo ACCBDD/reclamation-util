@@ -20,7 +20,7 @@ public enum WaterCauldronComponentProvider implements IBlockComponentProvider {
     @Override
     public void appendTooltip(ITooltip iTooltip, BlockAccessor blockAccessor, IPluginConfig iPluginConfig) {
         BlockState state = blockAccessor.getBlockState();
-        if (blockAccessor.getBlock() == Blocks.WATER_CAULDRON && state.hasProperty(WaterPurity.BLOCK_PURITY)) {
+        if (blockAccessor.getBlock() == Blocks.WATER_CAULDRON && state.hasProperty(WaterPurity.BLOCK_PURITY) && state.getValue(WaterPurity.BLOCK_PURITY) > 0) {
             int purity = state.getValue(WaterPurity.BLOCK_PURITY) - 1;
             String purityText = WaterPurity.getPurityText(purity);
             int purityColor = WaterPurity.getPurityColor(purity);
