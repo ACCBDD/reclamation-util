@@ -21,7 +21,6 @@
     "FermentationVatRedstonePatch",
     "FermenterStoragePatch",
     "FluidIngredientNbtPatch",
-    "FluidIngredientNbtPatch$FluidValueTagPatch",
     "FluidSerializerPatch",
     "GravestoneMixin",
     "IContainerBlockEntityAccessor",
@@ -29,7 +28,7 @@
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch",
-    "TheurgyFluidNormalizePatch",
+    "SeasRodPatch",
     "WitchCauldronCapacityPatch"
   ],
   "client": [
