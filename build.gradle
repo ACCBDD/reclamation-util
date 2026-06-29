@@ -120,6 +120,7 @@ dependencies {
     implementation fg.deobf("curse.maven:theurgy-430636:7816723")
     implementation fg.deobf("curse.maven:modonomicon-538392:7446143")
     implementation fg.deobf("curse.maven:embers-rekindled-300777:7446478")
+    implementation fg.deobf("curse.maven:macaws-furniture-359540:7255630")
 }
 
 mixin {

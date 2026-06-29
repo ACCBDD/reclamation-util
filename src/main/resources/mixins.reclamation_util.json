@@ -31,6 +31,7 @@
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch",
     "SeasRodPatch",
+    "SinkPatch",
     "WitchCauldronCapacityPatch"
   ],
   "client": [
