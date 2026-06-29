@@ -1,10 +1,13 @@
 package com.accbdd.reclamation_util;
 
+import com.accbdd.reclamation_util.capability.GlobeCountCapability;
 import com.accbdd.reclamation_util.datagen.DataGenerators;
 import com.accbdd.reclamation_util.event.AreaBreakItemUsage;
+import com.accbdd.reclamation_util.item.BiomeGlobeItem;
 import com.accbdd.reclamation_util.item.CamelPackItem;
 import com.accbdd.reclamation_util.compat.ICauldronTankHolder;
 import com.accbdd.reclamation_util.naturesaura.ReclaimEffect;
+import com.accbdd.reclamation_util.network.ReclamationPacketHandler;
 import com.accbdd.reclamation_util.particle.ColoredDripParticle;
 import com.accbdd.reclamation_util.particle.ColoredLeafParticle;
 import com.accbdd.reclamation_util.plugin.ReclamationPlantModifiers;
@@ -18,7 +21,10 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.renderer.item.ItemPropertyFunction;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,8 +33,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.capability.templates.FluidHandlerItemStack;
@@ -66,10 +75,61 @@ public class ReclamationUtil {
         ReclamationPlantModifiers.register();
         NaturesAuraAPI.DRAIN_SPOT_EFFECTS.put(ReclaimEffect.NAME, ReclaimEffect::new);
         NaturesAuraAPI.EFFECT_POWDERS.put(ReclaimEffect.NAME, 0xFFCC00);
+        ReclamationPacketHandler.register();
     }
 
     public static void afterLoadComplete(FMLLoadCompleteEvent event) {
         NaturesAuraAPI.PROJECTILE_GENERATIONS.put(EntityType.SNOWBALL, 0);
+    }
+
+    @SubscribeEvent
+    public void onPlayerClone(PlayerEvent.Clone event) {
+        event.getOriginal().getCapability(GlobeCountCapability.GLOBE_COUNT).ifPresent(oldCap -> {
+            event.getEntity().getCapability(GlobeCountCapability.GLOBE_COUNT).ifPresent(newCap -> {
+                newCap.getData().count = oldCap.getData().count;
+            });
+
+            if (event.getOriginal() instanceof ServerPlayer serverPlayer) {
+                ReclamationPacketHandler.sendToPlayer(oldCap.getData().count, serverPlayer);
+            }
+        });
+    }
+
+    @SubscribeEvent
+    public void onServerTick(TickEvent.ServerTickEvent event) {
+        BiomeGlobeItem.serverTick();
+    }
+
+    @SubscribeEvent
+    public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            player.getCapability(GlobeCountCapability.GLOBE_COUNT).ifPresent(cap -> {
+                ReclamationPacketHandler.sendToPlayer(cap.getData().count, player);
+            });
+        }
+    }
+
+    @SubscribeEvent
+    public void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            player.getCapability(GlobeCountCapability.GLOBE_COUNT).ifPresent(cap -> {
+                ReclamationPacketHandler.sendToPlayer(cap.getData().count, player);
+            });
+        }
+    }
+
+    @SubscribeEvent
+    public void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+        event.register(GlobeCountCapability.class);
+    }
+
+    @SubscribeEvent
+    public void entityCapabilities(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof Player player) {
+            if (!event.getObject().getCapability(GlobeCountCapability.GLOBE_COUNT).isPresent()) {
+                event.addCapability(GlobeCountCapability.ID, new GlobeCountCapability());
+            }
+        }
     }
 
     @SubscribeEvent

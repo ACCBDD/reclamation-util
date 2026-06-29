@@ -77,5 +77,10 @@
   "itemGroup.reclamation_util": "Reclamation",
   "effect.complicated_bees.reclamation_util:natural_aura": "Aura",
   "effect.complicated_bees.reclamation_util:natural_aura.desc": "Generates a large amount of Aura nearby. Affected by Creational Catalyst.",
-  "config.jade.plugin_reclamation_util.cauldron_purity": "Cauldron Water Purity"
+  "config.jade.plugin_reclamation_util.cauldron_purity": "Cauldron Water Purity",
+  "item.reclamation_util.globe.tooltip.range": "Converts a circle with radius %s blocks.",
+  "item.reclamation_util.globe.tooltip.range_sneak": "Sneaking converts a radius of %s blocks.",
+  "item.reclamation_util.globesome.tooltip": "Power... at what cost?",
+  "item.reclamation_util.globesome.tooltip_disabled": "You are not §lhardcore§r enough to use this.",
+  "chat.reclamation_util.globesome": "%s has ascended to globe level %s!"
 }
