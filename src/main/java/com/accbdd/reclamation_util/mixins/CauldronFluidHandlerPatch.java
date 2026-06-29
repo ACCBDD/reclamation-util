@@ -2,9 +2,7 @@ package com.accbdd.reclamation_util.mixins;
 
 import com.accbdd.reclamation_util.compat.ICauldronTankHolder;
 import net.favouriteless.enchanted.common.blocks.entity.CauldronBlockEntity;
-import net.favouriteless.enchanted.common.blocks.entity.ContainerBlockEntityBase;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

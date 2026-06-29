@@ -30,6 +30,7 @@
     "MystAgriHarvesterInvoker",
     "MystAgriHarvesterPatch",
     "NaturesAuraRecipePatch",
+    "OneTankHandlerBucketPatch",
     "SeasRodPatch",
     "SinkPatch",
     "WitchCauldronCapacityPatch"

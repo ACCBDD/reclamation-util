@@ -42,11 +42,13 @@ Utilities and mixins for the Reclamation modpack.
   * All machines now only allow extraction of outputs
   * Digestion and fermentation vats output comparator signal when there's a valid recipe in them - signal strength scales with how full the output inventory is
   * Accumulator recipe json supports nbt when checking inputs (for Thirst is Taken compat)
+  * Liquefaction cauldron infinite filling from partially draining bucket bug patched
 * Thirst was Taken patches
   * Compatibility with the Create pump to respect purity when pulling water from a cauldron
   * Cauldrons filled with rainwater have purity of Dirty
   * Cauldrons filled with dripstone have purity of Acceptable
   * Cauldrons filled with water display purity on their jade tooltip
-  * Botania's rod of the seas produces slightly dirty water instead of default
+  * Botania's rod of the seas produces slightly dirty water instead of untagged
   * Ars Elemental's Everfull Urn produces acceptable water instead of untagged
+  * Macaw's Furniture sinks can no longer produce water
 * Removes bonemealing water to generate plants
