@@ -51,4 +51,5 @@ Utilities and mixins for the Reclamation modpack.
   * Botania's rod of the seas produces slightly dirty water instead of untagged
   * Ars Elemental's Everfull Urn produces acceptable water instead of untagged
   * Macaw's Furniture sinks can no longer produce water
+  * Stop Botania Petal Apothecary from laundering water
 * Removes bonemealing water to generate plants
