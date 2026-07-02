@@ -9,6 +9,7 @@ Utilities and mixins for the Reclamation modpack.
   * Two-tone colored dripping liquid
 * Complicated Bees
   * Natural Aura effect
+  * Crimsine, Ochurate, Asuric, Veridine effect (convert stone to Create orestones)
   * Poison Frame (0.75x lifespan, 0.9x productivity)
   * Permafrost Frame (-2 temperature, 0.4x lifespan)
 * Area of effect tools
