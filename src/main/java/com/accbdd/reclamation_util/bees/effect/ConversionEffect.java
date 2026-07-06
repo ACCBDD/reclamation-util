@@ -27,18 +27,18 @@ public class ConversionEffect extends BeeEffect {
                 Level level = apiary.getLevel();
                 if (level != null) {
                     BlockPosBoxIterator iterator = this.getBlockIterator(apiary, queen);
-                    List<BlockPos> convertables = new ArrayList();
+                    List<BlockPos> convertibles = new ArrayList<>();
 
                     while (iterator.hasNext()) {
                         BlockPos pos = iterator.next();
                         BlockState state = level.getBlockState(pos);
                         if (state.equals(convertFrom)) {
-                            convertables.add(pos);
+                            convertibles.add(pos);
                         }
                     }
 
-                    if ((double) level.random.nextFloat() < 0.1 || !convertables.isEmpty()) {
-                        BlockPos switchPos = convertables.get(level.random.nextInt(convertables.size()));
+                    if (!convertibles.isEmpty() && level.random.nextFloat() < 0.1f) {
+                        BlockPos switchPos = convertibles.get(level.random.nextInt(convertibles.size()));
                         level.setBlockAndUpdate(switchPos, convertTo);
                     }
                 }
