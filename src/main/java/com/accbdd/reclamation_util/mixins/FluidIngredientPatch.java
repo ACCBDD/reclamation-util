@@ -13,18 +13,18 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FluidIngredient.class)
-public abstract class FluidIngredientNbtPatch {
+public abstract class FluidIngredientPatch {
     @Shadow
-    public static Fluid fluidFromJson(JsonObject pItemObject) {
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Shadow
+    public FluidStack[] getFluids() {
         return null;
     }
 
-    @Inject(
-            method = "fluidValueFromJson",
-            at = @At("HEAD"),
-            cancellable = true,
-            remap = false
-    )
+    @Inject(method = "fluidValueFromJson", at = @At("HEAD"), cancellable = true, remap = false)
     private static void parseOptionalNbt(JsonObject pJson, CallbackInfoReturnable<FluidIngredient.Value> cir) {
         if (pJson.has("fluid")) {
             Fluid fluid = FluidIngredient.fluidFromJson(pJson);

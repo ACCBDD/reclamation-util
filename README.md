@@ -44,6 +44,7 @@ Utilities and mixins for the Reclamation modpack.
   * Digestion and fermentation vats output comparator signal when there's a valid recipe in them - signal strength scales with how full the output inventory is
   * Accumulator recipe json supports nbt when checking inputs (for Thirst is Taken compat)
   * Liquefaction cauldron infinite filling from partially draining bucket bug patched
+  * Digestion and fermentation vats ignore fluid nbt when checking for recipes
 * Thirst was Taken patches
   * Compatibility with the Create pump to respect purity when pulling water from a cauldron
   * Cauldrons filled with rainwater have purity of Dirty
