@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "refmap": "mixins.reclamation_util.refmap.json",
   "mixins": [
+    "AccumulationRecipePatch",
     "AgriCraftComplexityPatch",
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
