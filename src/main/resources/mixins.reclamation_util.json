@@ -8,6 +8,7 @@
     "AgriCraftFertilityPatch",
     "AgriCraftFluidConditionPatch",
     "BotaniaCauldronPatch",
+    "BottlePickupPatch",
     "CalcinationStoragePatch",
     "CauldronFluidHandlerPatch",
     "CauldronPurityPatch",
@@ -35,6 +36,7 @@
     "PetalApothecaryPatch",
     "SeasRodPatch",
     "SinkPatch",
+    "WaterPurityPatch",
     "WitchCauldronCapacityPatch"
   ],
   "client": [

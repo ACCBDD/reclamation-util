@@ -53,4 +53,6 @@ Utilities and mixins for the Reclamation modpack.
   * Ars Elemental's Everfull Urn produces acceptable water instead of untagged
   * Macaw's Furniture sinks can no longer produce water
   * Stop Botania Petal Apothecary from laundering water
+  * Bottles pick up whole source blocks 4 at a time
+  * No ability to pick up water from flowing blocks
 * Removes bonemealing water to generate plants
